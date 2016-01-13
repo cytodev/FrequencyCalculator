@@ -1,0 +1,10 @@
+<resources>
+    <!-- general strings -->
+    <string name="app_name">Frequency Calculator</string>
+
+    <!-- <placeholders> -->
+        <string name="placeholder_icon">icon</string>
+        <string name="placeholder_string">string</string>
+    <!-- </placeholders> -->
+
+</resources>
