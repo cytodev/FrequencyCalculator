@@ -2,10 +2,10 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".activities.PreferencesActivity">
 
     <ViewStub
         android:id="@+id/stub_toolbar"
@@ -15,8 +15,8 @@
 
     <FrameLayout
         android:id="@+id/rootView"
+        android:paddingTop="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="?attr/actionBarSize"/>
+        android:layout_height="match_parent"/>
 
 </android.support.design.widget.CoordinatorLayout>

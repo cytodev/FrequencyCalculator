@@ -2,6 +2,34 @@
     <!-- general strings -->
     <string name="app_name">Frequency Calculator</string>
 
+    <!-- <navigation> -->
+        <string name="nav_settings">settings</string>
+    <!-- </navigation> -->
+
+    <!-- <preferences> -->
+        <string name="pref_theme">Theme</string>
+        <string-array name="pref_themes">
+            <item>White Smoke &amp; Grey (default)</item>
+            <item>Dodger Blue &amp; Blue Lagoon</item>
+            <item>Spring Bud &amp; Olive Green</item>
+            <item>Electric Purple &amp; Indigo</item>
+            <item>Orange Peel &amp; Olive Brown</item>
+            <item>Hollywood Cerise &amp; Tyrian Purple</item>
+            <item>Spring Green &amp; Watercourse</item>
+        </string-array>
+        <string-array name="pref_themes_values">
+            <item>WhiteSmoke</item>
+            <item>DodgerBlue</item>
+            <item>SpringBud</item>
+            <item>ElectricPurple</item>
+            <item>OrangePeel</item>
+            <item>HollywoodCerise</item>
+            <item>SpringGreen</item>
+        </string-array>
+        <string name="pref_theme_dark">Use dark theme</string>
+        <string name="pref_theme_dark_sum">Uses a dark background</string>
+    <!-- </preferences> -->
+
     <!-- <placeholders> -->
         <string name="placeholder_icon">icon</string>
         <string name="placeholder_string">string</string>
