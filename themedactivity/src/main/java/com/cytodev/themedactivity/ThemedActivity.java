@@ -1,7 +1,6 @@
 package com.cytodev.themedactivity;
 
 import android.app.Activity;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,11 +20,11 @@ import java.util.Map;
 public class ThemedActivity extends AppCompatActivity {
     private final static String TAG = ThemedActivity.class.getSimpleName();
 
-    private Activity thisActivity;
-    private int currentTheme = -1;
-    private boolean currentThemeIsLight;
-    private Map<String, Integer> lightThemes = new HashMap<>();
-    private Map<String, Integer> darkThemes = new HashMap<>();
+    private Activity             thisActivity        = null;
+    private int                  currentTheme        = -1;
+    private boolean              currentThemeIsLight = false;
+    private Map<String, Integer> lightThemes         = new HashMap<>();
+    private Map<String, Integer> darkThemes          = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +64,10 @@ public class ThemedActivity extends AppCompatActivity {
      */
     public void setTheme(boolean light, String themeName) {
         Log.d(TAG, "Setting theme to \""+((light) ? "Light" : "Dark")+themeName+"\"");
-        currentTheme = getTheme(light, themeName);
+
+        currentTheme        = getTheme(light, themeName);
         currentThemeIsLight = light;
+
         super.setTheme(currentTheme);
     }
 
@@ -105,7 +106,7 @@ public class ThemedActivity extends AppCompatActivity {
      * @param themeResID resource id of the theme
      */
     public void addTheme(boolean light, String themeName, int themeResID) {
-        Log.d(TAG, "Adding new theme \""+((light) ? "Light" : "Dark")+themeName+"\"");
+        Log.d(TAG, "Adding new theme \""+((light) ? "Light." : "Dark.")+themeName+"\"");
 
         if(light) {
             lightThemes.put(themeName, themeResID);
@@ -122,7 +123,7 @@ public class ThemedActivity extends AppCompatActivity {
      * @return the resource id of the theme
      */
     public int getTheme(boolean light, String themeName) {
-        Log.d(TAG, "Getting resid of \""+((light) ? "Light" : "Dark")+themeName+"\"");
+        Log.d(TAG, "Getting resid of \""+((light) ? "Light." : "Dark.")+themeName+"\"");
 
         return (light) ? lightThemes.get(themeName) : darkThemes.get(themeName);
     }
@@ -147,7 +148,7 @@ public class ThemedActivity extends AppCompatActivity {
             }
         }
 
-        Log.w(TAG, "No "+((light) ? "light" : "dark")+" theme with resid "+Integer.toString(themeResID)+" found!");
+        Log.w(TAG, "No " + ((light) ? "light" : "dark") + " theme with resid " + Integer.toString(themeResID) + " found!");
         return "";
     }
 
@@ -158,32 +159,77 @@ public class ThemedActivity extends AppCompatActivity {
      * @return the theme map
      */
     public Map<String, Integer> getThemes(boolean light) {
-        Log.v(TAG, "Getting all "+((light) ? "light" : "dark")+" themes");
+        Log.v(TAG, "Getting all " + ((light) ? "light" : "dark") + " themes");
 
         return (light) ? lightThemes : darkThemes;
     }
 
     /**
-     * Checks whether the currently applied theme has a dark actionbar (based on ColorPrimary)
+     * Returns the perceived darkness of a color
      *
-     * @return true if the darkness of colorPrimary is above 50%
+     * @param color integer value of a color
+     * @return darkness value as double
      */
-    public boolean hasDarkActionBar() {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = thisActivity.getTheme();
+    public double calculateDarkness(int color) {
+        int c = (int) Long.parseLong(Integer.toString(color), 16);
+        int r = (c >> 16) & 0xFF;
+        int g = (c >>  8) & 0xFF;
+        int b = (c >> 0) & 0xFF;
 
-        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        return 1 - (0.299 * Color.red(r)
+                   +0.587 * Color.green(g)
+                   +0.114 * Color.blue(b)
+                   ) / 255;
+    }
 
-        int color = (int) Long.parseLong(Integer.toString(typedValue.data), 16);
-        int red   = (color >> 16) & 0xFF;
-        int green = (color >>  8) & 0xFF;
-        int blue  = (color >>  0) & 0xFF;
-        double darkness = 1 - (0.299 * Color.red(red)
-                              +0.587 * Color.green(green)
-                              +0.114 * Color.blue(blue)
-                              ) / 255;
+    /**
+     * The following table is a reference of the default themes darkness values:
+     * <p></p>
+     * <table summary="default themes darkness values">
+     *   <tr>
+     *       <th>theme</th>
+     *       <th>darkness value</th>
+     *   </tr>
+     *   <tr>
+     *       <td>WhiteSmoke</td>
+     *       <td>0.9065647058823529</td>
+     *   <tr>
+     *       <td>DodgerBlue</td>
+     *       <td>0.9407647058823530</td>
+     *   <tr>
+     *       <td>SpringBud</td>
+     *       <td>0.8953882352941176</td>
+     *   <tr>
+     *       <td>ElectricPurple</td>
+     *       <td>0.9407647058823530</td>
+     *   <tr>
+     *       <td>OrangePeel</td>
+     *       <td>0.8953882352941176</td>
+     *   <tr>
+     *       <td>HollywoodCerise</td>
+     *       <td>0.9228823529411765</td>
+     *   <tr>
+     *       <td>SpringGreen</td>
+     *       <td>0.9228823529411765</td>
+     *</table>
+     * @return the overall darkness value of the theme (based on colorPrimary and colorPrimaryDark)
+     */
+    public double getThemeDarkness() {
+        TypedValue colorPrimary = new TypedValue();
+        TypedValue colorPrimaryDark = new TypedValue();
 
-        return (darkness < 0.5);
+        thisActivity.getTheme().resolveAttribute(R.attr.colorPrimary, colorPrimary, true);
+        thisActivity.getTheme().resolveAttribute(R.attr.colorPrimaryDark, colorPrimaryDark, true);
+
+        double colorPrimaryDarkness = calculateDarkness(colorPrimary.data);
+        double colorPrimaryDarkDarkness = calculateDarkness(colorPrimaryDark.data);
+        double darkness = ((colorPrimaryDarkness + colorPrimaryDarkDarkness) / 2); // pretty rad variable.
+
+        Log.d(TAG, "colorPrimary darkness value: " + Double.toString(colorPrimaryDarkness));
+        Log.d(TAG, "colorPrimaryDark darkness value: " + Double.toString(colorPrimaryDarkDarkness));
+        Log.d(TAG, "overall darkness value: " + Double.toString(darkness));
+
+        return darkness;
     }
 
 }

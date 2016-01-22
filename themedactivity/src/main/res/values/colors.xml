@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#FF7F7F7F</color>
     <color name="colorAccent">#FF3F3F3F</color>
 
+    <color name="colorBackgroundDark">#FF303030</color>
+    <color name="colorBackgroundLight">#FFFAFAFA</color>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
        - These are the colors a user can select in Cyto apps.
        - Dodger Blue     <- compliments -> Orange Peel
