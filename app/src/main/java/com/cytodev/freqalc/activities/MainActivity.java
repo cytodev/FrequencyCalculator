@@ -56,9 +56,12 @@ public class MainActivity extends ThemedActivity {
         int id = item.getItemId();
 
         if(id == R.id.action_settings) {
-            Intent settings = new Intent(MainActivity.this, PreferencesActivity.class);
-            MainActivity.this.startActivity(settings);
-            MainActivity.this.finish();
+            Intent settings = new Intent(thisActivity, PreferencesActivity.class);
+
+            settings.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            thisActivity.startActivity(settings);
+            thisActivity.finish();
+            overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             return true;
         }
 

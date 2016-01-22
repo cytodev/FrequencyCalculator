@@ -70,31 +70,42 @@ public class PreferencesActivity extends ThemedActivity {
         if(getSupportActionBar() == null) {
             setSupportActionBar(toolbar);
         }
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setupUserInterface() {
         manager.beginTransaction()
                 .replace(R.id.rootView, NestedPreferenceFragment.newInstance(R.xml.prefs, R.string.action_settings))
                 .commit();
+
+        if(getIntent().getExtras() != null) {
+            int preferenceFile = getIntent().getExtras().getInt("pref");
+            int preferenceName = getIntent().getExtras().getInt("name");
+
+            // zero seems to work... Not at all tested on enough devices.
+            manager.beginTransaction()
+                    .setCustomAnimations(0, 0, R.animator.push_right_in, R.animator.push_right_out)
+                    .replace(R.id.rootView, NestedPreferenceFragment.newInstance(preferenceFile, preferenceName))
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     private void back() {
         if(manager.getBackStackEntryCount() > 0) {
             manager.popBackStack();
 
-//            if(getSupportActionBar() != null) {
-//                if(PreferencesFragment.getSubTitle() == R.string.pref_thirdparty) {
-//                    getSupportActionBar().setSubtitle(R.string.pref_about);
-//                    PreferencesFragment.setSubTitle(R.string.pref_about);
-//                } else {
-//                    getSupportActionBar().setSubtitle(null);
-//                }
-//            }
+            if(getSupportActionBar() != null) {
+                getSupportActionBar().setSubtitle(null);
+            }
         } else {
-            Intent back = new Intent(PreferencesActivity.this, MainActivity.class);
+            Intent back = new Intent(thisActivity, MainActivity.class);
 
-            this.startActivity(back);
-            this.finish();
+            back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            thisActivity.startActivity(back);
+            thisActivity.finish();
+            overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
         }
     }
 
