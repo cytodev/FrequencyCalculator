@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorBackgroundLight">#FFFAFAFA</color>
+    <color name="colorBackgroundDark">#FF303030</color>
+
+    <color name="textColorPrimaryLight">#FFFFFFFF</color>
+    <color name="textColorSecondaryLight">#C1FFFFFF</color>
+    <color name="textColorPrimaryDark">#FF000000</color>
+    <color name="textColorSecondaryDark">#C1000000</color>
+
     <color name="colorPrimary">#FFF9F9F9</color>
     <color name="colorPrimaryDark">#FF7F7F7F</color>
     <color name="colorAccent">#FF3F3F3F</color>
-
-    <color name="colorBackgroundDark">#FF303030</color>
-    <color name="colorBackgroundLight">#FFFAFAFA</color>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
        - These are the colors a user can select in Cyto apps.
