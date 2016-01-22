@@ -6,198 +6,179 @@
     <style name="Theme.Cyto.PopupOverlay.Light"  parent="ThemeOverlay.AppCompat.Light" />
     <style name="Theme.Cyto.PopupOverlay.Dark"   parent="ThemeOverlay.AppCompat" />
 
-    <style name="Theme.Cyto.Light.WhiteSmoke" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Cyto.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_light</item>
+        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Light</item>
+    </style>
+
+    <style name="Theme.Cyto.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_dark</item>
+        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Dark</item>
+    </style>
+
+    <style name="Theme.Cyto.Light.WhiteSmoke" parent="Theme.Cyto.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@drawable/background_light</item>
-
         <item name="toolbar_titleTextColor">@color/textColorPrimaryDark</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryDark</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Light</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Light</item>
         <item name="ic_search">@drawable/ic_search_dark</item>
         <item name="ic_share">@drawable/ic_share_dark</item>
         <item name="ic_settings">@drawable/ic_settings_dark</item>
     </style>
 
-    <style name="Theme.Cyto.Dark.WhiteSmoke" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.Cyto.Dark.WhiteSmoke" parent="Theme.Cyto.Dark">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@drawable/background_dark</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryDark</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryDark</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Light</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Dark</item>
         <item name="ic_search">@drawable/ic_search_dark</item>
         <item name="ic_share">@drawable/ic_share_dark</item>
         <item name="ic_settings">@drawable/ic_settings_dark</item>
     </style>
 
-    <style name="Theme.Cyto.Light.DodgerBlue" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Cyto.Light.DodgerBlue" parent="Theme.Cyto.Light">
         <item name="colorPrimary">@color/DodgerBlue</item>
         <item name="colorPrimaryDark">@color/BlueLagoon</item>
         <item name="colorAccent">@color/OrangePeel</item>
-        <item name="android:windowBackground">@drawable/background_light</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryLight</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryLight</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Dark</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Light</item>
         <item name="ic_search">@drawable/ic_search_light</item>
         <item name="ic_share">@drawable/ic_share_light</item>
         <item name="ic_settings">@drawable/ic_settings_light</item>
     </style>
 
-    <style name="Theme.Cyto.Dark.DodgerBlue" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.Cyto.Dark.DodgerBlue" parent="Theme.Cyto.Dark">
         <item name="colorPrimary">@color/DodgerBlue</item>
         <item name="colorPrimaryDark">@color/BlueLagoon</item>
         <item name="colorAccent">@color/OrangePeel</item>
-        <item name="android:windowBackground">@drawable/background_dark</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryLight</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryLight</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Dark</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Dark</item>
         <item name="ic_search">@drawable/ic_search_light</item>
         <item name="ic_share">@drawable/ic_share_light</item>
         <item name="ic_settings">@drawable/ic_settings_light</item>
     </style>
 
-    <style name="Theme.Cyto.Light.SpringBud" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Cyto.Light.SpringBud" parent="Theme.Cyto.Light">
         <item name="colorPrimary">@color/SpringBud</item>
         <item name="colorPrimaryDark">@color/OliveGreen</item>
         <item name="colorAccent">@color/HollywoodCerise</item>
-        <item name="android:windowBackground">@drawable/background_light</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryDark</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryDark</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Light</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Light</item>
         <item name="ic_search">@drawable/ic_search_dark</item>
         <item name="ic_share">@drawable/ic_share_dark</item>
         <item name="ic_settings">@drawable/ic_settings_dark</item>
     </style>
 
-    <style name="Theme.Cyto.Dark.SpringBud" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.Cyto.Dark.SpringBud" parent="Theme.Cyto.Dark">
         <item name="colorPrimary">@color/SpringBud</item>
         <item name="colorPrimaryDark">@color/OliveGreen</item>
         <item name="colorAccent">@color/HollywoodCerise</item>
-        <item name="android:windowBackground">@drawable/background_dark</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryDark</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryDark</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Light</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Dark</item>
         <item name="ic_search">@drawable/ic_search_dark</item>
         <item name="ic_share">@drawable/ic_share_dark</item>
         <item name="ic_settings">@drawable/ic_settings_dark</item>
     </style>
 
-    <style name="Theme.Cyto.Light.ElectricPurple" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Cyto.Light.ElectricPurple" parent="Theme.Cyto.Light">
         <item name="colorPrimary">@color/ElectricPurple</item>
         <item name="colorPrimaryDark">@color/Indigo</item>
         <item name="colorAccent">@color/SpringGreen</item>
-        <item name="android:windowBackground">@drawable/background_light</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryLight</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryLight</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Dark</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Light</item>
         <item name="ic_search">@drawable/ic_search_light</item>
         <item name="ic_share">@drawable/ic_share_light</item>
         <item name="ic_settings">@drawable/ic_settings_light</item>
     </style>
 
-    <style name="Theme.Cyto.Dark.ElectricPurple" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.Cyto.Dark.ElectricPurple" parent="Theme.Cyto.Dark">
         <item name="colorPrimary">@color/ElectricPurple</item>
         <item name="colorPrimaryDark">@color/Indigo</item>
         <item name="colorAccent">@color/SpringGreen</item>
-        <item name="android:windowBackground">@drawable/background_dark</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryLight</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryLight</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Dark</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Dark</item>
         <item name="ic_search">@drawable/ic_search_light</item>
         <item name="ic_share">@drawable/ic_share_light</item>
         <item name="ic_settings">@drawable/ic_settings_light</item>
     </style>
 
-    <style name="Theme.Cyto.Light.OrangePeel" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Cyto.Light.OrangePeel" parent="Theme.Cyto.Light">
         <item name="colorPrimary">@color/OrangePeel</item>
         <item name="colorPrimaryDark">@color/OliveBrown</item>
         <item name="colorAccent">@color/DodgerBlue</item>
-        <item name="android:windowBackground">@drawable/background_light</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryLight</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryLight</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Dark</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Light</item>
         <item name="ic_search">@drawable/ic_search_light</item>
         <item name="ic_share">@drawable/ic_share_light</item>
         <item name="ic_settings">@drawable/ic_settings_light</item>
     </style>
 
-    <style name="Theme.Cyto.Dark.OrangePeel" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.Cyto.Dark.OrangePeel" parent="Theme.Cyto.Dark">
         <item name="colorPrimary">@color/OrangePeel</item>
         <item name="colorPrimaryDark">@color/OliveBrown</item>
         <item name="colorAccent">@color/DodgerBlue</item>
-        <item name="android:windowBackground">@drawable/background_dark</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryLight</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryLight</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Dark</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Dark</item>
         <item name="ic_search">@drawable/ic_search_light</item>
         <item name="ic_share">@drawable/ic_share_light</item>
         <item name="ic_settings">@drawable/ic_settings_light</item>
     </style>
 
-    <style name="Theme.Cyto.Light.HollywoodCerise" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Cyto.Light.HollywoodCerise" parent="Theme.Cyto.Light">
         <item name="colorPrimary">@color/HollywoodCerise</item>
         <item name="colorPrimaryDark">@color/TyrianPurple</item>
         <item name="colorAccent">@color/SpringBud</item>
-        <item name="android:windowBackground">@drawable/background_light</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryLight</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryLight</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Dark</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Light</item>
         <item name="ic_search">@drawable/ic_search_light</item>
         <item name="ic_share">@drawable/ic_share_light</item>
         <item name="ic_settings">@drawable/ic_settings_light</item>
     </style>
 
-    <style name="Theme.Cyto.Dark.HollywoodCerise" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.Cyto.Dark.HollywoodCerise" parent="Theme.Cyto.Dark">
         <item name="colorPrimary">@color/HollywoodCerise</item>
         <item name="colorPrimaryDark">@color/TyrianPurple</item>
         <item name="colorAccent">@color/SpringBud</item>
-        <item name="android:windowBackground">@drawable/background_dark</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryLight</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryLight</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Dark</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Dark</item>
         <item name="ic_search">@drawable/ic_search_light</item>
         <item name="ic_share">@drawable/ic_share_light</item>
         <item name="ic_settings">@drawable/ic_settings_light</item>
     </style>
 
-    <style name="Theme.Cyto.Light.SpringGreen" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Cyto.Light.SpringGreen" parent="Theme.Cyto.Light">
         <item name="colorPrimary">@color/SpringGreen</item>
         <item name="colorPrimaryDark">@color/Watercourse</item>
         <item name="colorAccent">@color/ElectricPurple</item>
-        <item name="android:windowBackground">@drawable/background_light</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryDark</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryDark</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Light</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Light</item>
         <item name="ic_search">@drawable/ic_search_dark</item>
         <item name="ic_share">@drawable/ic_share_dark</item>
         <item name="ic_settings">@drawable/ic_settings_dark</item>
     </style>
 
-    <style name="Theme.Cyto.Dark.SpringGreen" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.Cyto.Dark.SpringGreen" parent="Theme.Cyto.Dark">
         <item name="colorPrimary">@color/SpringGreen</item>
         <item name="colorPrimaryDark">@color/Watercourse</item>
         <item name="colorAccent">@color/ElectricPurple</item>
-        <item name="android:windowBackground">@drawable/background_dark</item>
         <item name="toolbar_titleTextColor">@color/textColorPrimaryDark</item>
         <item name="toolbar_subtitleTextColor">@color/textColorSecondaryDark</item>
         <item name="toolbar_theme">@style/Theme.Cyto.AppBarOverlay.Light</item>
-        <item name="toolbar_popup">@style/Theme.Cyto.PopupOverlay.Dark</item>
         <item name="ic_search">@drawable/ic_search_dark</item>
         <item name="ic_share">@drawable/ic_share_dark</item>
         <item name="ic_settings">@drawable/ic_settings_dark</item>
