@@ -18,7 +18,11 @@
 
         <activity
             android:name=".activities.PreferencesActivity"
-            android:label="@string/action_settings"/>
+            android:label="@string/action_settings" />
+
+        <activity
+            android:name=".activities.CytoActivity"
+            android:theme="@style/Theme.Cytodev" />
 
     </application>
 

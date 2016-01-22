@@ -26,4 +26,11 @@
         <item name="ic_report_problem">@drawable/ic_report_problem_light</item>
     </style>
 
+    <style name="Theme.Cytodev" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparant_black</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
 </resources>

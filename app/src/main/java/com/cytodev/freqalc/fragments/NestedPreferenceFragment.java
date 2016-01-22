@@ -14,6 +14,7 @@ import android.text.Html;
 import android.util.Log;
 
 import com.cytodev.freqalc.R;
+import com.cytodev.freqalc.activities.CytoActivity;
 import com.cytodev.freqalc.activities.PreferencesActivity;
 
 import java.io.FileNotFoundException;
@@ -179,6 +180,15 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                 return true;
             }
         };
+        final Preference.OnPreferenceClickListener cytoLauncher = new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                PreferencesActivity prefs = (PreferencesActivity) getActivity();
+                Intent cytoLauncher = new Intent(prefs, CytoActivity.class);
+                prefs.startActivity(cytoLauncher);
+                return true;
+            }
+        };
         final Preference.OnPreferenceClickListener licenseLauncher = new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -222,6 +232,7 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
         Log.v(TAG, "Attaching listeners");
         attachClickListener("pref_cat_about", nestedListener);
+        attachClickListener("pref_about_developer", cytoLauncher);
         attachClickListener("pref_about_license", licenseLauncher);
         attachClickListener("pref_cat_appearance", nestedListener);
     }
