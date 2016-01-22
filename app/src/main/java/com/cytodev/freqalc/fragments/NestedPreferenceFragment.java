@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.cytodev.freqalc.R;
 import com.cytodev.freqalc.activities.CytoActivity;
@@ -223,7 +225,9 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                     e.printStackTrace();
                     licenseDialog.setMessage(e.getLocalizedMessage());
                 } finally {
-                    licenseDialog.show();
+                    AlertDialog dialog = licenseDialog.create();
+                    dialog.show();
+                    ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                 }
 
                 return true;
