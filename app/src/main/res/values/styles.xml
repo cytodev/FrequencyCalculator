@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <style name="Theme.Cyto.AppBarOverlay.Dark" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="Theme.Cyto.AppBarOverlay.Light" parent="ThemeOverlay.AppCompat.Light"/>
-    <style name="Theme.Cyto.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
-</resources>
