@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewStub;
 
 import com.cytodev.freqalc.R;
 import com.cytodev.freqalc.fragments.NestedPreferenceFragment;
@@ -67,16 +65,7 @@ public class PreferencesActivity extends ThemedActivity {
     }
 
     private void setupToolbar() {
-        ViewStub stub = (ViewStub) findViewById(R.id.stub_toolbar);
-
-        if(super.getThemeDarkness() > 0.93) {
-            stub.setLayoutResource(R.layout.layout_toolbar_dark);
-        } else {
-            stub.setLayoutResource(R.layout.layout_toolbar_light);
-        }
-
-        View toolbar_layout = stub.inflate();
-        Toolbar toolbar = (Toolbar) toolbar_layout.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         if(getSupportActionBar() == null) {
             setSupportActionBar(toolbar);
@@ -85,7 +74,7 @@ public class PreferencesActivity extends ThemedActivity {
 
     private void setupUserInterface() {
         manager.beginTransaction()
-                .replace(R.id.rootView, NestedPreferenceFragment.newInstance(R.xml.prefs, R.string.nav_settings))
+                .replace(R.id.rootView, NestedPreferenceFragment.newInstance(R.xml.prefs, R.string.action_settings))
                 .commit();
     }
 

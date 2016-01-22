@@ -18,7 +18,7 @@
 
         <activity
             android:name=".activities.PreferencesActivity"
-            android:label="@string/nav_settings"/>
+            android:label="@string/action_settings"/>
 
     </application>
 

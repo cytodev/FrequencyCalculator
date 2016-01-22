@@ -10,8 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewStub;
 
 import com.cytodev.freqalc.R;
 import com.cytodev.themedactivity.ThemedActivity;
@@ -57,7 +55,7 @@ public class MainActivity extends ThemedActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.nav_settings) {
+        if(id == R.id.action_settings) {
             Intent settings = new Intent(MainActivity.this, PreferencesActivity.class);
             MainActivity.this.startActivity(settings);
             MainActivity.this.finish();
@@ -68,16 +66,7 @@ public class MainActivity extends ThemedActivity {
     }
 
     private void setupToolbar() {
-        ViewStub stub = (ViewStub) findViewById(R.id.stub_toolbar);
-
-        if(super.getThemeDarkness() > 0.93) {
-            stub.setLayoutResource(R.layout.layout_toolbar_dark);
-        } else {
-            stub.setLayoutResource(R.layout.layout_toolbar_light);
-        }
-
-        View toolbar_layout = stub.inflate();
-        Toolbar toolbar = (Toolbar) toolbar_layout.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         if(getSupportActionBar() == null) {
             setSupportActionBar(toolbar);

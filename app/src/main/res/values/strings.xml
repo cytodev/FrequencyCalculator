@@ -2,9 +2,9 @@
     <!-- general strings -->
     <string name="app_name">Frequency Calculator</string>
 
-    <!-- <navigation> -->
-        <string name="nav_settings">settings</string>
-    <!-- </navigation> -->
+    <!-- <actions> -->
+        <string name="action_settings">settings</string>
+    <!-- </actions> -->
 
     <!-- <preferences> -->
         <string name="pref_theme">Theme</string>

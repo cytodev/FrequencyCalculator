@@ -35,7 +35,7 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         NestedPreferenceFragment.subTitle = getArguments().getInt("NAME");
 
         if(((PreferencesActivity) getActivity()).getSupportActionBar() != null) {
-            if(getArguments().getInt("NAME") != R.string.nav_settings) {
+            if(getArguments().getInt("NAME") != R.string.action_settings) {
                 ((PreferencesActivity) getActivity()).getSupportActionBar().setSubtitle(subTitle);
             }
         }

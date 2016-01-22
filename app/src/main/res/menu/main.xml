@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/nav_settings"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/nav_settings"
+        android:id="@+id/action_settings"
+        android:icon="?attr/ic_settings"
+        android:title="@string/action_settings"
         app:showAsAction="ifRoom"/>
 
 </menu>
