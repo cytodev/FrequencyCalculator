@@ -32,26 +32,22 @@ public class PreferencesActivity extends ThemedActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         super.setDefaults();
 
         thisActivity = PreferencesActivity.this;
-        preferences = PreferenceManager.getDefaultSharedPreferences(thisActivity);
-        manager = getFragmentManager();
-        themeName = preferences.getString("theme", "WhiteSmoke");
-        themeLight = !preferences.getBoolean("darkTheme", false);
+        preferences  = PreferenceManager.getDefaultSharedPreferences(thisActivity);
+        manager      = getFragmentManager();
+        themeName    = preferences.getString("theme", "WhiteSmoke");
+        themeLight   = !preferences.getBoolean("darkTheme", false);
 
         if(!super.getCurrentThemeName().equals(themeName)) {
             super.setTheme(themeLight, themeName);
         }
 
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
+        setupToolbar();
         setupUserInterface();
-
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.rootView, NestedPreferenceFragment.newInstance(R.xml.prefs, R.string.nav_settings))
-                .commit();
     }
 
     @Override
@@ -70,13 +66,13 @@ public class PreferencesActivity extends ThemedActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setupUserInterface() {
+    private void setupToolbar() {
         ViewStub stub = (ViewStub) findViewById(R.id.stub_toolbar);
 
-        if(super.hasDarkActionBar()) {
-            stub.setLayoutResource(R.layout.layout_toolbar_light);
-        } else {
+        if(super.getThemeDarkness() > 0.93) {
             stub.setLayoutResource(R.layout.layout_toolbar_dark);
+        } else {
+            stub.setLayoutResource(R.layout.layout_toolbar_light);
         }
 
         View toolbar_layout = stub.inflate();
@@ -84,13 +80,18 @@ public class PreferencesActivity extends ThemedActivity {
 
         if(getSupportActionBar() == null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
+    private void setupUserInterface() {
+        manager.beginTransaction()
+                .replace(R.id.rootView, NestedPreferenceFragment.newInstance(R.xml.prefs, R.string.nav_settings))
+                .commit();
+    }
+
     private void back() {
-        if(getFragmentManager().getBackStackEntryCount() > 0) {
-            getFragmentManager().popBackStack();
+        if(manager.getBackStackEntryCount() > 0) {
+            manager.popBackStack();
 
 //            if(getSupportActionBar() != null) {
 //                if(PreferencesFragment.getSubTitle() == R.string.pref_thirdparty) {

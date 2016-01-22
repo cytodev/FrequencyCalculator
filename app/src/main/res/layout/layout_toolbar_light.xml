@@ -12,6 +12,7 @@
         android:background="?attr/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:popupTheme="@style/Theme.Cyto.PopupOverlay"/>
+        android:theme="@style/Theme.Cyto.AppBarOverlay.Light"
+        app:popupTheme="@style/Theme.Cyto.PopupOverlay" />
 
 </android.support.design.widget.AppBarLayout>

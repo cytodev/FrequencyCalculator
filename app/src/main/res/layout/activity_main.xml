@@ -11,12 +11,12 @@
         android:id="@+id/stub_toolbar"
         android:inflatedId="@+id/panel_toolbar"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <FrameLayout
         android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="?attr/actionBarSize"/>
+        android:paddingTop="?attr/actionBarSize" />
 
 </android.support.design.widget.CoordinatorLayout>

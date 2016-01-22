@@ -27,20 +27,21 @@ public class MainActivity extends ThemedActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         super.setDefaults();
 
         thisActivity = MainActivity.this;
-        preferences = PreferenceManager.getDefaultSharedPreferences(thisActivity);
-        manager = getFragmentManager();
-        themeName = preferences.getString("theme", "WhiteSmoke");
-        themeLight = !preferences.getBoolean("darkTheme", false);
+        preferences  = PreferenceManager.getDefaultSharedPreferences(thisActivity);
+        manager      = getFragmentManager();
+        themeName    = preferences.getString("theme", "WhiteSmoke");
+        themeLight   = !preferences.getBoolean("darkTheme", false);
 
         if(!super.getCurrentThemeName().equals(themeName)) {
             super.setTheme(themeLight, themeName);
         }
 
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setupToolbar();
         setupUserInterface();
     }
 
@@ -66,10 +67,10 @@ public class MainActivity extends ThemedActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setupUserInterface() {
+    private void setupToolbar() {
         ViewStub stub = (ViewStub) findViewById(R.id.stub_toolbar);
 
-        if(super.hasDarkActionBar()) {
+        if(super.getThemeDarkness() > 0.93) {
             stub.setLayoutResource(R.layout.layout_toolbar_dark);
         } else {
             stub.setLayoutResource(R.layout.layout_toolbar_light);
@@ -81,6 +82,10 @@ public class MainActivity extends ThemedActivity {
         if(getSupportActionBar() == null) {
             setSupportActionBar(toolbar);
         }
+    }
+
+    private void setupUserInterface() {
+
     }
 
 }
