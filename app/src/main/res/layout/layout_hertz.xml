@@ -22,4 +22,5 @@
         android:layout_weight="1"
         android:text="@string/freq_hertz"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
+
 </LinearLayout>
