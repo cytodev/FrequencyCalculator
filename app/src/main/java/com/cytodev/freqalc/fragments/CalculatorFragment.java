@@ -63,9 +63,9 @@ public class CalculatorFragment extends Fragment {
     }
 
     private void getPrefs() {
-        this.average     = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("Average", false);
-        this.decimals    = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString("Decimals", "3"));
-        this.averageTaps = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString("AverageTaps", "4"));
+        this.average     = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("pref_general_average", false);
+        this.decimals    = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString("pref_general_decimals", "3"));
+        this.averageTaps = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString("pref_general_averagenum", "4"));
     }
 
     public void updateVals(String identifier) {

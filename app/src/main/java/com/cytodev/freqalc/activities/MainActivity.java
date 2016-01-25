@@ -20,8 +20,6 @@ import com.cytodev.freqalc.fragments.TimeFragment;
 import com.cytodev.themedactivity.ThemedActivity;
 
 public class MainActivity extends ThemedActivity {
-    private final static String TAG = MainActivity.class.getSimpleName();
-
     private Activity          thisActivity;
     private SharedPreferences preferences;
     private FragmentManager   manager;
@@ -77,11 +75,11 @@ public class MainActivity extends ThemedActivity {
     }
 
     private void getPrefs() {
-        this.themeName    = preferences.getString("theme", "WhiteSmoke");
-        this.themeLight   = !preferences.getBoolean("darkTheme", false);
-        this.displayBeats = preferences.getBoolean("DisplayBeats", true);
-        this.displayTime  = preferences.getBoolean("DisplayTime", true);
-        this.displayTap   = preferences.getBoolean("DisplayTap", true);
+        this.themeName    = preferences.getString("pref_appearance_theme", "WhiteSmoke");
+        this.themeLight   = !preferences.getBoolean("pref_appearance_theme_dark", false);
+        this.displayBeats = preferences.getBoolean("pref_interface_beats", true);
+        this.displayTime  = preferences.getBoolean("pref_interface_time", true);
+        this.displayTap   = preferences.getBoolean("pref_interface_tap", true);
     }
 
     private void setupToolbar() {

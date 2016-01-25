@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="pref_general_decimals"
+        android:title="@string/pref_general_decimals"
+        android:entries="@array/pref_general_decimals_humanvalues"
+        android:entryValues="@array/pref_general_decimals_values"
+        android:summary="%s"
+        android:defaultValue="3" />
+
+    <CheckBoxPreference
+        android:key="pref_general_average"
+        android:title="@string/pref_general_average"
+        android:summary="@string/pref_general_average_sum"
+        android:defaultValue="false" />
+
+    <ListPreference
+        android:key="AverageTaps"
+        android:title="@string/pref_general_averagenum"
+        android:entries="@array/pref_general_averagenum_humanvalues"
+        android:entryValues="@array/pref_general_averagenum_values"
+        android:summary="%s"
+        android:defaultValue="4" />
+
+</PreferenceScreen>

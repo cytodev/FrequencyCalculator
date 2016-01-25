@@ -2,17 +2,17 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ListPreference
-        android:key="theme"
-        android:title="@string/pref_theme"
-        android:entries="@array/pref_themes"
-        android:entryValues="@array/pref_themes_values"
+        android:key="pref_appearance_theme"
+        android:title="@string/pref_appearance_theme"
+        android:entries="@array/pref_appearance_themes"
+        android:entryValues="@array/pref_appearance_themes_values"
         android:summary="%s"
         android:defaultValue="WhiteSmoke"/>
 
     <CheckBoxPreference
-        android:key="darkTheme"
-        android:title="@string/pref_theme_dark"
-        android:summary="@string/pref_theme_dark_sum"
+        android:key="pref_appearance_theme_dark"
+        android:title="@string/pref_appearance_theme_dark"
+        android:summary="@string/pref_appearance_theme_dark_sum"
         android:defaultValue="false"/>
 
 </PreferenceScreen>

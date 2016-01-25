@@ -11,8 +11,8 @@
         <string name="pref_about_developer">CytoDev</string>
         <string name="pref_about_license">license</string>
         <string name="pref_cat_appearance">appearance</string>
-        <string name="pref_theme">Theme</string>
-        <string-array name="pref_themes">
+        <string name="pref_appearance_theme">Theme</string>
+        <string-array name="pref_appearance_themes">
             <item>White Smoke &amp; Grey (default)</item>
             <item>Dodger Blue &amp; Blue Lagoon</item>
             <item>Spring Bud &amp; Olive Green</item>
@@ -21,7 +21,7 @@
             <item>Hollywood Cerise &amp; Tyrian Purple</item>
             <item>Spring Green &amp; Watercourse</item>
         </string-array>
-        <string-array name="pref_themes_values">
+        <string-array name="pref_appearance_themes_values">
             <item>WhiteSmoke</item>
             <item>DodgerBlue</item>
             <item>SpringBud</item>
@@ -30,8 +30,53 @@
             <item>HollywoodCerise</item>
             <item>SpringGreen</item>
         </string-array>
-        <string name="pref_theme_dark">Use dark theme</string>
-        <string name="pref_theme_dark_sum">Uses a dark background</string>
+        <string name="pref_appearance_theme_dark">Use dark theme</string>
+        <string name="pref_appearance_theme_dark_sum">Uses a dark background</string>
+        <string name="pref_cat_general">general settings</string>
+        <string name="pref_general_decimals">decimal precision</string>
+        <string-array name="pref_general_decimals_humanvalues">
+            <item>1 decimal</item>
+            <item>2 decimals</item>
+            <item>3 decimals</item>
+            <item>4 decimals</item>
+            <item>5 decimals</item>
+            <item>6 decimals</item>
+            <item>7 decimals</item>
+        </string-array>
+        <string-array name="pref_general_decimals_values">
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+            <item>4</item>
+            <item>5</item>
+            <item>6</item>
+            <item>7</item>
+        </string-array>
+        <string name="pref_general_average">average bpm tap</string>
+        <string name="pref_general_average_sum">calculates the bpm based on an average taps</string>
+        <string name="pref_general_averagenum">number of taps to take as average</string>
+        <string-array name="pref_general_averagenum_humanvalues">
+            <item>4 taps</item>
+            <item>8 taps</item>
+            <item>16 taps</item>
+            <item>32 taps</item>
+            <item>unlimited</item>
+        </string-array>
+        <string-array name="pref_general_averagenum_values">
+            <item>4</item>
+            <item>8</item>
+            <item>16</item>
+            <item>32</item>
+            <item>-1</item>
+        </string-array>
+        <string name="pref_general_averagenum_unlimitedHelp">long press tap button to clear average</string>
+        <string name="pref_cat_interface">interface</string>
+        <string name="pref_interface_beats">show beats</string>
+        <string name="pref_interface_beats_sum">shows second/minute/hour input</string>
+        <string name="pref_interface_time">show time</string>
+        <string name="pref_interface_time_sum">shows millisecond/second/minute input</string>
+        <string name="pref_interface_tap">show beat tap</string>
+        <string name="pref_interface_tap_sum">shows the tap button</string>
     <!-- </preferences> -->
 
     <!-- <placeholders> -->
@@ -46,7 +91,7 @@
         <string name="freq_beatsPerMinute">beats per minute</string>
         <string name="freq_beatsPerSecond">beats per second</string>
         <string name="freq_time">Time:</string>
-        <string name="freq_timeMilis">miliseconds</string>
+        <string name="freq_timeMilis">milliseconds</string>
         <string name="freq_timeSeconds">seconds</string>
         <string name="freq_timeMinutes">minutes</string>
         <string name="freq_tap">Tap the bpm:</string>

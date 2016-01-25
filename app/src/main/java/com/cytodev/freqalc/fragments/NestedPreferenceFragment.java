@@ -166,6 +166,12 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                     case "pref_cat_appearance":
                         instance = R.xml.prefs_appearance;
                         break;
+                    case "pref_cat_general":
+                        instance = R.xml.prefs_general;
+                        break;
+                    case "pref_cat_interface":
+                        instance = R.xml.prefs_interface;
+                        break;
                     default:
                         break;
                 }
@@ -239,6 +245,8 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         attachClickListener("pref_about_developer", cytoLauncher);
         attachClickListener("pref_about_license", licenseLauncher);
         attachClickListener("pref_cat_appearance", nestedListener);
+        attachClickListener("pref_cat_general", nestedListener);
+        attachClickListener("pref_cat_interface", nestedListener);
     }
 
 }

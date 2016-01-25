@@ -20,23 +20,19 @@ import com.cytodev.themedactivity.ThemedActivity;
  * @author Roel Walraven <cytodev@gmail.com>
  */
 public class PreferencesActivity extends ThemedActivity {
-    private final static String TAG = PreferencesActivity.class.getSimpleName();
-
-    private Activity          thisActivity;
-    private SharedPreferences preferences;
-    private FragmentManager   manager;
-    private String            themeName;
-    private boolean           themeLight;
+    private Activity        thisActivity;
+    private FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.setDefaults();
 
         thisActivity = PreferencesActivity.this;
-        preferences  = PreferenceManager.getDefaultSharedPreferences(thisActivity);
         manager      = getFragmentManager();
-        themeName    = preferences.getString("theme", "WhiteSmoke");
-        themeLight   = !preferences.getBoolean("darkTheme", false);
+
+        SharedPreferences preferences  = PreferenceManager.getDefaultSharedPreferences(thisActivity);
+        String            themeName    = preferences.getString("pref_appearance_theme", "WhiteSmoke");
+        boolean           themeLight   = !preferences.getBoolean("pref_appearance_theme_dark", false);
 
         if(!super.getCurrentThemeName().equals(themeName)) {
             super.setTheme(themeLight, themeName);
