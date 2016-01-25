@@ -39,4 +39,19 @@
         <string name="placeholder_string">string</string>
     <!-- </placeholders> -->
 
+    <!-- <calculator-strings> -->
+        <string name="freq_hertz">Hertz</string>
+        <string name="freq_beats">Beats:</string>
+        <string name="freq_beatsPerHour">beats per hour</string>
+        <string name="freq_beatsPerMinute">beats per minute</string>
+        <string name="freq_beatsPerSecond">beats per second</string>
+        <string name="freq_time">Time:</string>
+        <string name="freq_timeMilis">miliseconds</string>
+        <string name="freq_timeSeconds">seconds</string>
+        <string name="freq_timeMinutes">minutes</string>
+        <string name="freq_tap">Tap the bpm:</string>
+        <string name="freq_input_tap">TAP</string>
+        <string name="freq_input_tap_cleared">Cleared bpm average.</string>
+    <!-- </calculator-strings> -->
+
 </resources>
