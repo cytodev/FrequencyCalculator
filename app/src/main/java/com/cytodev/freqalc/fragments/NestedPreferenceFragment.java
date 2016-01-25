@@ -134,8 +134,8 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                 Log.v(TAG, "Called onSharedPreferenceChanged");
 
                 switch(key) {
-                    case "theme":
-                    case "darkTheme":
+                    case "pref_appearance_theme":
+                    case "pref_appearance_theme_dark":
                         PreferencesActivity prefs = (PreferencesActivity) getActivity();
                         Bundle bundle = new Bundle();
                         Intent restart = prefs.getIntent();
