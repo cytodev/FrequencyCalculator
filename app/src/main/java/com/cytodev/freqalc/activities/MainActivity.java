@@ -2,6 +2,7 @@ package com.cytodev.freqalc.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +13,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.cytodev.freqalc.R;
+import com.cytodev.freqalc.fragments.BeatsFragment;
+import com.cytodev.freqalc.fragments.HertzFragment;
+import com.cytodev.freqalc.fragments.TapFragment;
+import com.cytodev.freqalc.fragments.TimeFragment;
 import com.cytodev.themedactivity.ThemedActivity;
 
 public class MainActivity extends ThemedActivity {
@@ -22,6 +27,9 @@ public class MainActivity extends ThemedActivity {
     private FragmentManager   manager;
     private String            themeName;
     private boolean           themeLight;
+    private boolean           displayBeats;
+    private boolean           displayTime;
+    private boolean           displayTap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +38,8 @@ public class MainActivity extends ThemedActivity {
         thisActivity = MainActivity.this;
         preferences  = PreferenceManager.getDefaultSharedPreferences(thisActivity);
         manager      = getFragmentManager();
-        themeName    = preferences.getString("theme", "WhiteSmoke");
-        themeLight   = !preferences.getBoolean("darkTheme", false);
+
+        getPrefs();
 
         if(!super.getCurrentThemeName().equals(themeName)) {
             super.setTheme(themeLight, themeName);
@@ -68,6 +76,14 @@ public class MainActivity extends ThemedActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void getPrefs() {
+        this.themeName    = preferences.getString("theme", "WhiteSmoke");
+        this.themeLight   = !preferences.getBoolean("darkTheme", false);
+        this.displayBeats = preferences.getBoolean("DisplayBeats", true);
+        this.displayTime  = preferences.getBoolean("DisplayTime", true);
+        this.displayTap   = preferences.getBoolean("DisplayTap", true);
+    }
+
     private void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -77,7 +93,20 @@ public class MainActivity extends ThemedActivity {
     }
 
     private void setupUserInterface() {
+        FragmentTransaction fragTransaction = manager.beginTransaction();
 
+        fragTransaction.replace(R.id.hertzView, new HertzFragment());
+
+        if(displayBeats)
+            fragTransaction.replace(R.id.beatsView, new BeatsFragment());
+
+        if(displayTime)
+            fragTransaction.replace(R.id.timeView, new TimeFragment());
+
+        if(displayTap)
+            fragTransaction.replace(R.id.tapView, new TapFragment());
+
+        fragTransaction.commit();
     }
 
 }
