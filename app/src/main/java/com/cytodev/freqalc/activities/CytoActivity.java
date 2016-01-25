@@ -1,10 +1,13 @@
 package com.cytodev.freqalc.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 
 import com.cytodev.freqalc.R;
 
@@ -32,12 +35,23 @@ public class CytoActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
+        
+        animate(findViewById(R.id.github), CytoActivity.this, R.anim.slide_up, 750);
     }
 
     @Override
     public void finish() {
         super.finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    private void animate(final View view, final Context context, final int animation, final int delay) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                view.startAnimation(AnimationUtils.loadAnimation(context, animation));
+            }
+        }, delay);
     }
 
 }
