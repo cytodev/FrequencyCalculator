@@ -36,21 +36,21 @@ public class FrequencyCalculator {
 
         switch(identifier) {
             case "hz":
-                return this.freq__hz; // hertz
+                return this.freq__hz;
             case "bph":
-                return this.freq_bph; // beats per hour
+                return this.freq_bph;
             case "bpm":
-                return this.freq_bpm; // beats per minute
+                return this.freq_bpm;
             case "bps":
-                return this.freq_bps; // beats per second (aka hertz)
+                return this.freq_bps;
             case "tm":
-                return this.freq__tm; // time in minutes
+                return this.freq__tm;
             case "ts":
-                return this.freq__ts; // time in seconds
+                return this.freq__ts;
             case "tms":
-                return this.freq_tms; // time in miliseconds
+                return this.freq_tms;
             default:
-                return 0.000; // nothing
+                return 0.000;
         }
     }
 
@@ -66,27 +66,27 @@ public class FrequencyCalculator {
         switch(identifier) {
             case "hz":
                 this.freq__hz = value;
-                break; // hertz
+                break;
             case "bph":
                 this.freq_bph = value;
-                break; // beats per hour
+                break;
             case "bpm":
                 this.freq_bpm = value;
-                break; // beats per minute
+                break;
             case "bps":
                 this.freq_bps = value;
-                break; // beats per second (aka hertz)
+                break;
             case "tm":
                 this.freq__tm = value;
-                break; // time in minutes
+                break;
             case "ts":
                 this.freq__ts = value;
-                break; // time in seconds
+                break;
             case "tms":
                 this.freq_tms = value;
-                break; // time in miliseconds
+                break;
             default:
-                break; // nothing
+                break;
         }
     }
 
@@ -99,6 +99,83 @@ public class FrequencyCalculator {
         Log.d(TAG, "Setting decimals to " + Integer.toString(decimals));
 
         this.decimals = decimals;
+    }
+
+    /**
+     * Calculates all values instead of just one by the following calculateX methods
+     *
+     * @param identifier the known variable
+     * @param value      the double value of the known variable
+     */
+    public void calculate(String identifier, double value) {
+        switch(identifier) {
+            case "hz":
+                setFreq("hz",  value);
+                setFreq("bps", getFreq("hz"));
+                setFreq("bpm", calculateBeatsPerMinute(getFreq("bps"), 0.000));
+                setFreq("bph", calculateBeatsPerHour(getFreq("bpm")));
+                setFreq("tms", calculateMiliseconds(getFreq("hz"), 0.000));
+                setFreq("ts",  calculateSeconds(getFreq("tms"), 0.000));
+                setFreq("tm",  calculateMinutes(getFreq("ts")));
+                break;
+            case "bps":
+                setFreq("bps", value);
+                setFreq("hz",  getFreq("bps"));
+                setFreq("bpm", calculateBeatsPerMinute(getFreq("bps"), 0.000));
+                setFreq("bph", calculateBeatsPerHour(getFreq("bpm")));
+                setFreq("tms", calculateMiliseconds(getFreq("hz"), 0.000));
+                setFreq("ts",  calculateSeconds(getFreq("tms"), 0.000));
+                setFreq("tm",  calculateMinutes(getFreq("ts")));
+                break;
+            case "bpm":
+                setFreq("bpm", value);
+                setFreq("hz",  calculateHertz(0.000, getFreq("bpm")));
+                setFreq("bps", getFreq("hz"));
+                setFreq("bph", calculateBeatsPerHour(getFreq("bpm")));
+                setFreq("tms", calculateMiliseconds(getFreq("hz"), 0.000));
+                setFreq("ts",  calculateSeconds(getFreq("tms"), 0.000));
+                setFreq("tm",  calculateMinutes(getFreq("ts")));
+                break;
+            case "bph":
+                setFreq("bph", value);
+                setFreq("bpm", calculateBeatsPerMinute(0.000, getFreq("bph")));
+                setFreq("hz",  calculateHertz(0.000, getFreq("bpm")));
+                setFreq("bps", getFreq("hz"));
+                setFreq("tms", calculateMiliseconds(getFreq("hz"), 0.000));
+                setFreq("ts",  calculateSeconds(getFreq("tms"), 0.000));
+                setFreq("tm",  calculateMinutes(getFreq("ts")));
+                break;
+            case "tms":
+                setFreq("tms", value);
+                setFreq("ts",  calculateSeconds(getFreq("tms"), 0.000));
+                setFreq("tm",  calculateMinutes(getFreq("ts")));
+                setFreq("hz",  calculateHertz(getFreq("tms"), 0.000));
+                setFreq("bps", getFreq("hz"));
+                setFreq("bpm", calculateBeatsPerMinute(getFreq("bps"), 0.000));
+                setFreq("bph", calculateBeatsPerHour(getFreq("bpm")));
+                break;
+            case "ts":
+                setFreq("ts",  value);
+                setFreq("tm",  calculateMinutes(getFreq("ts")));
+                setFreq("tms", calculateMiliseconds(0.000, getFreq("ts")));
+                setFreq("hz",  calculateHertz(getFreq("tms"), 0.000));
+                setFreq("bps", getFreq("hz"));
+                setFreq("bpm", calculateBeatsPerMinute(getFreq("bps"), 0.000));
+                setFreq("bph", calculateBeatsPerHour(getFreq("bpm")));
+                break;
+            case "tm":
+                setFreq("tm",  value);
+                setFreq("ts",  calculateSeconds(0.000, getFreq("tm")));
+                setFreq("tms", calculateMiliseconds(0.000, getFreq("ts")));
+                setFreq("hz",  calculateHertz(getFreq("tms"), 0.000));
+                setFreq("bps", getFreq("hz"));
+                setFreq("bpm", calculateBeatsPerMinute(getFreq("bps"), 0.000));
+                setFreq("bph", calculateBeatsPerHour(getFreq("bpm")));
+                break;
+            default:
+                Log.w(TAG, identifier+" is not a valid identifier");
+                break;
+        }
     }
 
     /**
