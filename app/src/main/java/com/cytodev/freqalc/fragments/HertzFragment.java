@@ -1,5 +1,6 @@
 package com.cytodev.freqalc.fragments;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.cytodev.freqalc.R;
+import com.cytodev.freqalc.activities.MainActivity;
 
 /**
  * com.cytodev.freqalc.fragments "Frequency Calculator"
@@ -17,7 +19,7 @@ import com.cytodev.freqalc.R;
  *
  * @author Roel Walraven <cytodev@gmail.com>
  */
-public class HertzFragment extends CalculatorFragment {
+public class HertzFragment extends Fragment {
     private static final String TAG = HertzFragment.class.getSimpleName();
 
     private View hertz;
@@ -49,17 +51,17 @@ public class HertzFragment extends CalculatorFragment {
             @Override
             public void afterTextChanged(Editable s) {
                 String identifier = "";
-                if(!stop) {
+                if(!((MainActivity) getActivity()).stop) {
                     try {
                         if(s.hashCode() == hz.getText().hashCode()) {
                             identifier = "hz";
-                            freqalc.calculate(identifier, Double.parseDouble(hz.getText().toString()));
+                            ((MainActivity) getActivity()).freqalc.calculate(identifier, Double.parseDouble(hz.getText().toString()));
                         }
                     } catch(Exception e) {
-                        freqalc.calculate("hz", 0.000);
+                        ((MainActivity) getActivity()).freqalc.calculate("hz", 0.000);
                     }
 
-                    updateVals(identifier);
+                    ((MainActivity) getActivity()).updateVals(identifier);
                 }
             }
         };

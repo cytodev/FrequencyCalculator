@@ -11,12 +11,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import com.cytodev.freqalc.R;
 import com.cytodev.freqalc.fragments.BeatsFragment;
 import com.cytodev.freqalc.fragments.HertzFragment;
 import com.cytodev.freqalc.fragments.TapFragment;
 import com.cytodev.freqalc.fragments.TimeFragment;
+import com.cytodev.freqalc.logic.FrequencyCalculator;
 import com.cytodev.themedactivity.ThemedActivity;
 
 public class MainActivity extends ThemedActivity {
@@ -28,6 +30,12 @@ public class MainActivity extends ThemedActivity {
     private boolean           displayBeats;
     private boolean           displayTime;
     private boolean           displayTap;
+
+    public FrequencyCalculator freqalc;
+    public int                 decimals;
+    public int                 averageTaps;
+    public boolean             average;
+    public boolean             stop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,9 @@ public class MainActivity extends ThemedActivity {
         if(!super.getCurrentThemeName().equals(themeName)) {
             super.setTheme(themeLight, themeName);
         }
+
+        freqalc = new FrequencyCalculator();
+        freqalc.setDecimals(decimals);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -80,6 +91,9 @@ public class MainActivity extends ThemedActivity {
         this.displayBeats = preferences.getBoolean("pref_interface_beats", true);
         this.displayTime  = preferences.getBoolean("pref_interface_time", true);
         this.displayTap   = preferences.getBoolean("pref_interface_tap", true);
+        this.average      = preferences.getBoolean("pref_general_average", false);
+        this.decimals     = Integer.parseInt(preferences.getString("pref_general_decimals", "3"));
+        this.averageTaps  = Integer.parseInt(preferences.getString("pref_general_averagenum", "4"));
     }
 
     private void setupToolbar() {
@@ -105,6 +119,34 @@ public class MainActivity extends ThemedActivity {
             fragTransaction.replace(R.id.tapView, new TapFragment());
 
         fragTransaction.commit();
+    }
+
+    public void updateVals(String identifier) {
+        this.stop = true;
+
+        if(!identifier.equals("hz") && findViewById(R.id.freq_input_hertz) != null) {
+            ((EditText) findViewById(R.id.freq_input_hertz)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("hz"))));
+        }
+        if(!identifier.equals("bph") && findViewById(R.id.freq_input_beatsPerHour) != null) {
+            ((EditText) findViewById(R.id.freq_input_beatsPerHour)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("bph"))));
+        }
+        if(!identifier.equals("bpm") && findViewById(R.id.freq_input_beatsPerMinute) != null) {
+            ((EditText) findViewById(R.id.freq_input_beatsPerMinute)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("bpm"))));
+        }
+        if(!identifier.equals("bps") && findViewById(R.id.freq_input_beatsPerSecond) != null) {
+            ((EditText) findViewById(R.id.freq_input_beatsPerSecond)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("bps"))));
+        }
+        if(!identifier.equals("tm") && findViewById(R.id.freq_input_timeMinutes) != null) {
+            ((EditText) findViewById(R.id.freq_input_timeMinutes)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("tm"))));
+        }
+        if(!identifier.equals("ts") && findViewById(R.id.freq_input_timeSeconds) != null) {
+            ((EditText) findViewById(R.id.freq_input_timeSeconds)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("ts"))));
+        }
+        if(!identifier.equals("tms") && findViewById(R.id.freq_input_timeMilis) != null) {
+            ((EditText) findViewById(R.id.freq_input_timeMilis)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("tms"))));
+        }
+
+        this.stop = false;
     }
 
 }

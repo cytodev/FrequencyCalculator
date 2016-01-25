@@ -1,5 +1,6 @@
 package com.cytodev.freqalc.fragments;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.cytodev.freqalc.R;
+import com.cytodev.freqalc.activities.MainActivity;
 
 /**
  * com.cytodev.freqalc.fragments "Frequency Calculator"
@@ -17,7 +19,7 @@ import com.cytodev.freqalc.R;
  *
  * @author Roel Walraven <cytodev@gmail.com>
  */
-public class TimeFragment extends CalculatorFragment {
+public class TimeFragment extends Fragment {
     private static final String TAG = TimeFragment.class.getSimpleName();
 
     private View time;
@@ -51,23 +53,23 @@ public class TimeFragment extends CalculatorFragment {
             @Override
             public void afterTextChanged(Editable s) {
                 String identifier = "";
-                if(!stop) {
+                if(!((MainActivity) getActivity()).stop) {
                     try {
                         if(s.hashCode() == tm.getText().hashCode()) {
                             identifier = "tm";
-                            freqalc.calculate(identifier, Double.parseDouble(tm.getText().toString()));
+                            ((MainActivity) getActivity()).freqalc.calculate(identifier, Double.parseDouble(tm.getText().toString()));
                         } else if(s.hashCode() == ts.getText().hashCode()) {
                             identifier = "ts";
-                            freqalc.calculate(identifier, Double.parseDouble(ts.getText().toString()));
+                            ((MainActivity) getActivity()).freqalc.calculate(identifier, Double.parseDouble(ts.getText().toString()));
                         } else if(s.hashCode() == tms.getText().hashCode()) {
                             identifier = "tms";
-                            freqalc.calculate(identifier, Double.parseDouble(tms.getText().toString()));
+                            ((MainActivity) getActivity()).freqalc.calculate(identifier, Double.parseDouble(tms.getText().toString()));
                         }
                     } catch(Exception e) {
-                        freqalc.calculate("hz", 0.000);
+                        ((MainActivity) getActivity()).freqalc.calculate("hz", 0.000);
                     }
 
-                    updateVals(identifier);
+                    ((MainActivity) getActivity()).updateVals(identifier);
                 }
             }
         };

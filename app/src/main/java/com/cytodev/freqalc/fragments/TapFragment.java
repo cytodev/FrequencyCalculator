@@ -1,5 +1,6 @@
 package com.cytodev.freqalc.fragments;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.cytodev.freqalc.R;
+import com.cytodev.freqalc.activities.MainActivity;
 
 /**
  * com.cytodev.freqalc.fragments "Frequency Calculator"
@@ -18,7 +20,7 @@ import com.cytodev.freqalc.R;
  *
  * @author Roel Walraven <cytodev@gmail.com>
  */
-public class TapFragment extends CalculatorFragment {
+public class TapFragment extends Fragment {
     private static final String TAG = TapFragment.class.getSimpleName();
 
     private View tap;
@@ -45,8 +47,8 @@ public class TapFragment extends CalculatorFragment {
             public void onClick(View v) {
                 if(clickSwitch) {
                     endTime = System.currentTimeMillis();
-                    freqalc.tap(average, averageTaps, startTime, endTime);
-                    updateVals("");
+                    ((MainActivity) getActivity()).freqalc.tap(((MainActivity) getActivity()).average, ((MainActivity) getActivity()).averageTaps, startTime, endTime);
+                    ((MainActivity) getActivity()).updateVals("");
                     startTime = System.currentTimeMillis();
                 } else {
                     startTime = System.currentTimeMillis();
@@ -57,9 +59,9 @@ public class TapFragment extends CalculatorFragment {
         final View.OnLongClickListener tlc = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                freqalc.reset();
+                ((MainActivity) getActivity()).freqalc.reset();
                 clickSwitch = false;
-                updateVals("");
+                ((MainActivity) getActivity()).updateVals("");
                 Vibrator vb = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
                 vb.vibrate(50);
                 Toast.makeText(getActivity(), R.string.freq_input_tap_cleared, Toast.LENGTH_SHORT).show();
@@ -69,7 +71,7 @@ public class TapFragment extends CalculatorFragment {
 
         tb.setOnClickListener(tc);
 
-        if(average && averageTaps == -1) {
+        if(((MainActivity) getActivity()).average && ((MainActivity) getActivity()).averageTaps == -1) {
             tb.setOnLongClickListener(tlc);
         }
     }
