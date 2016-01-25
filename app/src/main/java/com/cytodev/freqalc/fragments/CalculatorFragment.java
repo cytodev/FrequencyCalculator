@@ -59,18 +59,7 @@ public class CalculatorFragment extends Fragment {
     public void onResume() {
         super.onResume();
         getPrefs();
-    }
-
-    public static CalculatorFragment newInstance(int layout) {
-        Log.v(TAG, "Creating new instance");
-
-        CalculatorFragment fragment = new CalculatorFragment();
-        Bundle args = new Bundle();
-
-        args.putInt("layout", layout);
-        fragment.setArguments(args);
-
-        return fragment;
+        freqalc.setDecimals(decimals);
     }
 
     private void getPrefs() {
