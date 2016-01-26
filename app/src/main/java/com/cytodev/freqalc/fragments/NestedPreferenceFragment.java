@@ -2,10 +2,12 @@ package com.cytodev.freqalc.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -135,6 +137,14 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
                 switch(key) {
                     case "pref_appearance_theme":
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.WhiteSmoke"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.DodgerBlue"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.SpringBud"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.ElectricPurple"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.OrangePeel"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.HollywoodCerise"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.SpringGreen"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc."+ sharedPreferences.getString(key, "WhiteSmoke")), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
                     case "pref_appearance_theme_dark":
                         PreferencesActivity prefs = (PreferencesActivity) getActivity();
                         Bundle bundle = new Bundle();
