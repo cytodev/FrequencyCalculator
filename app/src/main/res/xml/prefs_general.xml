@@ -16,7 +16,7 @@
         android:defaultValue="false" />
 
     <ListPreference
-        android:key="AverageTaps"
+        android:key="pref_general_averagenum"
         android:title="@string/pref_general_averagenum"
         android:entries="@array/pref_general_averagenum_humanvalues"
         android:entryValues="@array/pref_general_averagenum_values"

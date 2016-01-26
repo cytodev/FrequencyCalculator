@@ -47,7 +47,7 @@ public class TapFragment extends Fragment {
             public void onClick(View v) {
                 if(clickSwitch) {
                     endTime = System.currentTimeMillis();
-                    ((MainActivity) getActivity()).freqalc.tap(((MainActivity) getActivity()).average, ((MainActivity) getActivity()).averageTaps, startTime, endTime);
+                    ((MainActivity) getActivity()).freqalc.tap(MainActivity.getAverage(), MainActivity.getAverageTaps(), startTime, endTime);
                     ((MainActivity) getActivity()).updateVals("");
                     startTime = System.currentTimeMillis();
                 } else {
@@ -71,7 +71,7 @@ public class TapFragment extends Fragment {
 
         tb.setOnClickListener(tc);
 
-        if(((MainActivity) getActivity()).average && ((MainActivity) getActivity()).averageTaps == -1) {
+        if(MainActivity.getAverage() && MainActivity.getAverageTaps() == -1) {
             tb.setOnLongClickListener(tlc);
         }
     }

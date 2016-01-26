@@ -22,19 +22,18 @@ import com.cytodev.freqalc.logic.FrequencyCalculator;
 import com.cytodev.themedactivity.ThemedActivity;
 
 public class MainActivity extends ThemedActivity {
-    private Activity          thisActivity;
-    private SharedPreferences preferences;
-    private FragmentManager   manager;
-    private String            themeName;
-    private boolean           themeLight;
-    private boolean           displayBeats;
-    private boolean           displayTime;
-    private boolean           displayTap;
+    private static SharedPreferences preferences;
+
+    private Activity        thisActivity;
+    private FragmentManager manager;
+    private String          themeName;
+    private boolean         themeLight;
+    private boolean         displayBeats;
+    private boolean         displayTime;
+    private boolean         displayTap;
+    private int             decimals;
 
     public FrequencyCalculator freqalc;
-    public int                 decimals;
-    public int                 averageTaps;
-    public boolean             average;
     public boolean             stop;
 
     @Override
@@ -91,9 +90,15 @@ public class MainActivity extends ThemedActivity {
         this.displayBeats = preferences.getBoolean("pref_interface_beats", true);
         this.displayTime  = preferences.getBoolean("pref_interface_time", true);
         this.displayTap   = preferences.getBoolean("pref_interface_tap", true);
-        this.average      = preferences.getBoolean("pref_general_average", false);
         this.decimals     = Integer.parseInt(preferences.getString("pref_general_decimals", "3"));
-        this.averageTaps  = Integer.parseInt(preferences.getString("pref_general_averagenum", "4"));
+    }
+
+    public static boolean getAverage() {
+        return preferences.getBoolean("pref_general_average", false);
+    }
+
+    public static int getAverageTaps() {
+        return Integer.parseInt(preferences.getString("pref_general_averagenum", "4"));
     }
 
     private void setupToolbar() {

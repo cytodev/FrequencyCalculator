@@ -16,6 +16,7 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cytodev.freqalc.R;
 import com.cytodev.freqalc.activities.CytoActivity;
@@ -137,14 +138,14 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
                 switch(key) {
                     case "pref_appearance_theme":
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.WhiteSmoke"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.DodgerBlue"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.SpringBud"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.ElectricPurple"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.OrangePeel"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.HollywoodCerise"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.SpringGreen"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc."+ sharedPreferences.getString(key, "WhiteSmoke")), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.activities.MainActivity.WhiteSmoke"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.activities.MainActivity.DodgerBlue"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.activities.MainActivity.SpringBud"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.activities.MainActivity.ElectricPurple"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.activities.MainActivity.OrangePeel"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.activities.MainActivity.HollywoodCerise"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.activities.MainActivity.SpringGreen"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.cytodev.freqalc", "com.cytodev.freqalc.activities.MainActivity."+ sharedPreferences.getString(key, "WhiteSmoke")), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
                     case "pref_appearance_theme_dark":
                         PreferencesActivity prefs = (PreferencesActivity) getActivity();
                         Bundle bundle = new Bundle();
@@ -156,6 +157,11 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                         prefs.finish();
                         startActivity(restart);
                         prefs.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        break;
+                    case "pref_general_averagenum":
+                        if(sharedPreferences.getString(key, "4").equals("-1")) {
+                            Toast.makeText(context, R.string.pref_general_averagenum_unlimitedHelp, Toast.LENGTH_SHORT).show();
+                        }
                         break;
                 }
             }
