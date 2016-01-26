@@ -8,11 +8,16 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher_whitesmoke">
 
         <activity
             android:name=".activities.MainActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".activities.PreferencesActivity"
@@ -24,78 +29,78 @@
 
         <activity-alias
             android:icon="@mipmap/ic_launcher_whitesmoke"
-            android:name="WhiteSmoke"
+            android:name=".activities.MainActivity.WhiteSmoke"
             android:enabled="true"
             android:targetActivity=".activities.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
         <activity-alias
             android:icon="@mipmap/ic_launcher_dodgerblue"
-            android:name="DodgerBlue"
+            android:name=".activities.MainActivity.DodgerBlue"
             android:enabled="false"
             android:targetActivity=".activities.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
         <activity-alias
             android:icon="@mipmap/ic_launcher_springbud"
-            android:name="SpringBud"
+            android:name=".activities.MainActivity.SpringBud"
             android:enabled="false"
             android:targetActivity=".activities.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
         <activity-alias
             android:icon="@mipmap/ic_launcher_electricpurple"
-            android:name="ElectricPurple"
+            android:name=".activities.MainActivity.ElectricPurple"
             android:enabled="false"
             android:targetActivity=".activities.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
         <activity-alias
             android:icon="@mipmap/ic_launcher_orangepeel"
-            android:name="OrangePeel"
+            android:name=".activities.MainActivity.OrangePeel"
             android:enabled="false"
             android:targetActivity=".activities.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
         <activity-alias
             android:icon="@mipmap/ic_launcher_hollywoodcerice"
-            android:name="HollywoodCerise"
+            android:name=".activities.MainActivity.HollywoodCerise"
             android:enabled="false"
             android:targetActivity=".activities.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
         <activity-alias
             android:icon="@mipmap/ic_launcher_springgreen"
-            android:name="SpringGreen"
+            android:name=".activities.MainActivity.SpringGreen"
             android:enabled="false"
             android:targetActivity=".activities.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
