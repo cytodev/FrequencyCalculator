@@ -13,6 +13,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.crashlytics.android.Crashlytics;
+
+import io.fabric.sdk.android.Fabric;
+
 import io.cytodev.freqcalc.R;
 import io.cytodev.freqcalc.fragments.BeatsFragment;
 import io.cytodev.freqcalc.fragments.HertzFragment;
@@ -54,6 +58,7 @@ public class MainActivity extends ThemedActivity {
         freqcalc.setDecimals(decimals);
 
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         setupToolbar();
         setupUserInterface();
