@@ -15,4 +15,10 @@
         android:summary="@string/pref_appearance_theme_dark_sum"
         android:defaultValue="false"/>
 
+    <CheckBoxPreference
+        android:key="pref_appearance_icon"
+        android:title="@string/pref_appearance_icon"
+        android:summary="@string/pref_appearance_icon_sum"
+        android:defaultValue="false"/>
+
 </PreferenceScreen>

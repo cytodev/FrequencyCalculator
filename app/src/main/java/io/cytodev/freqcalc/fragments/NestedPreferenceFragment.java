@@ -12,6 +12,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -138,14 +139,7 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
                 switch(key) {
                     case "pref_appearance_theme":
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.WhiteSmoke"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.DodgerBlue"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.SpringBud"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.ElectricPurple"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.OrangePeel"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.HollywoodCerise"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.SpringGreen"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity."+ sharedPreferences.getString(key, "WhiteSmoke")), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                        changeTheme(false, false);
                     case "pref_appearance_theme_dark":
                         PreferencesActivity prefs = (PreferencesActivity) getActivity();
                         Bundle bundle = new Bundle();
@@ -157,6 +151,9 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                         prefs.finish();
                         startActivity(restart);
                         prefs.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        break;
+                    case "pref_appearance_icon":
+                        changeTheme(false, true);
                         break;
                     case "pref_general_averagenum":
                         if(sharedPreferences.getString(key, "4").equals("-1")) {
@@ -263,6 +260,46 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         attachClickListener("pref_cat_appearance", nestedListener);
         attachClickListener("pref_cat_general", nestedListener);
         attachClickListener("pref_cat_interface", nestedListener);
+    }
+
+    private void changeTheme(boolean revert, boolean iconChange) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        if(revert) {
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.WhiteSmoke"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.DodgerBlue"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.SpringBud"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.ElectricPurple"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.OrangePeel"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.HollywoodCerise"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.SpringGreen"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.WhiteSmoke"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+            return;
+        }
+
+        if(prefs.getBoolean("pref_appearance_icon", false)) {
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.WhiteSmoke"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.DodgerBlue"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.SpringBud"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.ElectricPurple"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.OrangePeel"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.HollywoodCerise"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.SpringGreen"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+            context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity." + prefs.getString("pref_appearance_theme", "WhiteSmoke")), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+        } else {
+            if(iconChange) {
+                new AlertDialog.Builder(context)
+                        .setTitle(R.string.dialog_icon_title)
+                        .setMessage(R.string.dialog_icon_message)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                changeTheme(true, false);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null)
+                        .show();
+            }
+        }
     }
 
 }

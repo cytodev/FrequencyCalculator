@@ -6,6 +6,11 @@
         <string name="action_settings">settings</string>
     <!-- </actions> -->
 
+    <!-- <dialogs> -->
+        <string name="dialog_icon_title">Revert icon colors?</string>
+        <string name="dialog_icon_message">Changes the app icon color back to the default theme (White Smoke &amp; Grey). Choosing no will result in the current theme being the app icon color.</string>
+    <!-- </dialogs -->
+
     <!-- <preferences> -->
         <string name="pref_cat_about">about</string>
         <string name="pref_about_developer">CytoDev</string>
@@ -32,6 +37,8 @@
         </string-array>
         <string name="pref_appearance_theme_dark">Use dark theme</string>
         <string name="pref_appearance_theme_dark_sum">Uses a dark background</string>
+        <string name="pref_appearance_icon">Themed icon</string>
+        <string name="pref_appearance_icon_sum">Changes icon color based on theme</string>
         <string name="pref_cat_general">general settings</string>
         <string name="pref_general_decimals">decimal precision</string>
         <string-array name="pref_general_decimals_humanvalues">
