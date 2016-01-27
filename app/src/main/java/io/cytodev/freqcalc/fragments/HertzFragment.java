@@ -1,4 +1,4 @@
-package io.cytodev.freqalc.fragments;
+package io.cytodev.freqcalc.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import io.cytodev.freqalc.R;
-import io.cytodev.freqalc.activities.MainActivity;
+import io.cytodev.freqcalc.R;
+import io.cytodev.freqcalc.activities.MainActivity;
 
 /**
- * io.cytodev.freqalc.fragments "Frequency Calculator"
+ * io.cytodev.freqcalc.fragments "Frequency Calculator"
  * 2016/01/25 @ 12:47
  *
  * @author Roel Walraven <cytodev@gmail.com>
@@ -55,10 +55,10 @@ public class HertzFragment extends Fragment {
                     try {
                         if(s.hashCode() == hz.getText().hashCode()) {
                             identifier = "hz";
-                            ((MainActivity) getActivity()).freqalc.calculate(identifier, Double.parseDouble(hz.getText().toString()));
+                            ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(hz.getText().toString()));
                         }
                     } catch(Exception e) {
-                        ((MainActivity) getActivity()).freqalc.calculate("hz", 0.000);
+                        ((MainActivity) getActivity()).freqcalc.calculate("hz", 0.000);
                     }
 
                     ((MainActivity) getActivity()).updateVals(identifier);

@@ -9,7 +9,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
     defaultConfig {
-        applicationId "io.cytodev.freqalc"
+        applicationId "io.cytodev.freqcalc"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 2

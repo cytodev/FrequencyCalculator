@@ -1,4 +1,4 @@
-package io.cytodev.freqalc.fragments;
+package io.cytodev.freqcalc.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,12 +21,12 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import io.cytodev.freqalc.R;
-import io.cytodev.freqalc.activities.CytoActivity;
-import io.cytodev.freqalc.activities.PreferencesActivity;
+import io.cytodev.freqcalc.R;
+import io.cytodev.freqcalc.activities.CytoActivity;
+import io.cytodev.freqcalc.activities.PreferencesActivity;
 
 /**
- * io.cytodev.freqalc.fragments "Frequency Calculator"
+ * io.cytodev.freqcalc.fragments "Frequency Calculator"
  * 2016/01/14 @ 13:42
  *
  * @author Roel Walraven <cytodev@gmail.com>
@@ -138,14 +138,14 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
                 switch(key) {
                     case "pref_appearance_theme":
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqalc", "io.cytodev.freqalc.activities.MainActivity.WhiteSmoke"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqalc", "io.cytodev.freqalc.activities.MainActivity.DodgerBlue"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqalc", "io.cytodev.freqalc.activities.MainActivity.SpringBud"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqalc", "io.cytodev.freqalc.activities.MainActivity.ElectricPurple"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqalc", "io.cytodev.freqalc.activities.MainActivity.OrangePeel"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqalc", "io.cytodev.freqalc.activities.MainActivity.HollywoodCerise"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqalc", "io.cytodev.freqalc.activities.MainActivity.SpringGreen"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqalc", "io.cytodev.freqalc.activities.MainActivity."+ sharedPreferences.getString(key, "WhiteSmoke")), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.WhiteSmoke"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.DodgerBlue"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.SpringBud"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.ElectricPurple"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.OrangePeel"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.HollywoodCerise"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity.SpringGreen"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                        context.getPackageManager().setComponentEnabledSetting(new ComponentName("io.cytodev.freqcalc", "io.cytodev.freqcalc.activities.MainActivity."+ sharedPreferences.getString(key, "WhiteSmoke")), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
                     case "pref_appearance_theme_dark":
                         PreferencesActivity prefs = (PreferencesActivity) getActivity();
                         Bundle bundle = new Bundle();
@@ -234,7 +234,7 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                     switch(preference.getKey()) {
                         case "pref_about_license":
                             licenseDialog.setTitle(R.string.pref_about_license);
-                            ins = res.openRawResource(R.raw.freqalc);
+                            ins = res.openRawResource(R.raw.freqcalc);
                             break;
                         default:
                             throw new FileNotFoundException();

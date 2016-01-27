@@ -1,4 +1,4 @@
-package io.cytodev.freqalc.activities;
+package io.cytodev.freqcalc.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -13,12 +13,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import io.cytodev.freqalc.R;
-import io.cytodev.freqalc.fragments.BeatsFragment;
-import io.cytodev.freqalc.fragments.HertzFragment;
-import io.cytodev.freqalc.fragments.TapFragment;
-import io.cytodev.freqalc.fragments.TimeFragment;
-import io.cytodev.freqalc.logic.FrequencyCalculator;
+import io.cytodev.freqcalc.R;
+import io.cytodev.freqcalc.fragments.BeatsFragment;
+import io.cytodev.freqcalc.fragments.HertzFragment;
+import io.cytodev.freqcalc.fragments.TapFragment;
+import io.cytodev.freqcalc.fragments.TimeFragment;
+import io.cytodev.freqcalc.logic.FrequencyCalculator;
 import io.cytodev.themedactivity.ThemedActivity;
 
 public class MainActivity extends ThemedActivity {
@@ -33,7 +33,7 @@ public class MainActivity extends ThemedActivity {
     private boolean         displayTap;
     private int             decimals;
 
-    public FrequencyCalculator freqalc;
+    public FrequencyCalculator freqcalc;
     public boolean             stop;
 
     @Override
@@ -50,8 +50,8 @@ public class MainActivity extends ThemedActivity {
             super.setTheme(themeLight, themeName);
         }
 
-        freqalc = new FrequencyCalculator();
-        freqalc.setDecimals(decimals);
+        freqcalc = new FrequencyCalculator();
+        freqcalc.setDecimals(decimals);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -130,25 +130,25 @@ public class MainActivity extends ThemedActivity {
         this.stop = true;
 
         if(!identifier.equals("hz") && findViewById(R.id.freq_input_hertz) != null) {
-            ((EditText) findViewById(R.id.freq_input_hertz)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("hz"))));
+            ((EditText) findViewById(R.id.freq_input_hertz)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("hz"))));
         }
         if(!identifier.equals("bph") && findViewById(R.id.freq_input_beatsPerHour) != null) {
-            ((EditText) findViewById(R.id.freq_input_beatsPerHour)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("bph"))));
+            ((EditText) findViewById(R.id.freq_input_beatsPerHour)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("bph"))));
         }
         if(!identifier.equals("bpm") && findViewById(R.id.freq_input_beatsPerMinute) != null) {
-            ((EditText) findViewById(R.id.freq_input_beatsPerMinute)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("bpm"))));
+            ((EditText) findViewById(R.id.freq_input_beatsPerMinute)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("bpm"))));
         }
         if(!identifier.equals("bps") && findViewById(R.id.freq_input_beatsPerSecond) != null) {
-            ((EditText) findViewById(R.id.freq_input_beatsPerSecond)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("bps"))));
+            ((EditText) findViewById(R.id.freq_input_beatsPerSecond)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("bps"))));
         }
         if(!identifier.equals("tm") && findViewById(R.id.freq_input_timeMinutes) != null) {
-            ((EditText) findViewById(R.id.freq_input_timeMinutes)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("tm"))));
+            ((EditText) findViewById(R.id.freq_input_timeMinutes)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("tm"))));
         }
         if(!identifier.equals("ts") && findViewById(R.id.freq_input_timeSeconds) != null) {
-            ((EditText) findViewById(R.id.freq_input_timeSeconds)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("ts"))));
+            ((EditText) findViewById(R.id.freq_input_timeSeconds)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("ts"))));
         }
         if(!identifier.equals("tms") && findViewById(R.id.freq_input_timeMilis) != null) {
-            ((EditText) findViewById(R.id.freq_input_timeMilis)).setText(Double.toString(freqalc.clipDecimals(freqalc.getFreq("tms"))));
+            ((EditText) findViewById(R.id.freq_input_timeMilis)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("tms"))));
         }
 
         this.stop = false;

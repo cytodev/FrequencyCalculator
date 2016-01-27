@@ -1,4 +1,4 @@
-package io.cytodev.freqalc.fragments;
+package io.cytodev.freqcalc.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import io.cytodev.freqalc.R;
-import io.cytodev.freqalc.activities.MainActivity;
+import io.cytodev.freqcalc.R;
+import io.cytodev.freqcalc.activities.MainActivity;
 
 /**
- * io.cytodev.freqalc.fragments "Frequency Calculator"
+ * io.cytodev.freqcalc.fragments "Frequency Calculator"
  * 2016/01/25 @ 11:46
  *
  * @author Roel Walraven <cytodev@gmail.com>
@@ -57,16 +57,16 @@ public class BeatsFragment extends Fragment {
                     try {
                         if(s.hashCode() == bph.getText().hashCode()) {
                             identifier = "bph";
-                            ((MainActivity) getActivity()).freqalc.calculate(identifier, Double.parseDouble(bph.getText().toString()));
+                            ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(bph.getText().toString()));
                         } else if(s.hashCode() == bpm.getText().hashCode()) {
                             identifier = "bpm";
-                            ((MainActivity) getActivity()).freqalc.calculate(identifier, Double.parseDouble(bpm.getText().toString()));
+                            ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(bpm.getText().toString()));
                         } else if(s.hashCode() == bps.getText().hashCode()) {
                             identifier = "bps";
-                            ((MainActivity) getActivity()).freqalc.calculate(identifier, Double.parseDouble(bps.getText().toString()));
+                            ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(bps.getText().toString()));
                         }
                     } catch(Exception e) {
-                        ((MainActivity) getActivity()).freqalc.calculate("hz", 0.000);
+                        ((MainActivity) getActivity()).freqcalc.calculate("hz", 0.000);
                     }
 
                     ((MainActivity) getActivity()).updateVals(identifier);
