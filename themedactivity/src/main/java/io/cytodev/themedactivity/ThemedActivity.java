@@ -1,4 +1,4 @@
-package com.cytodev.themedactivity;
+package io.cytodev.themedactivity;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * com.cytodev.themedactivity "ThemedActivity"
+ * io.cytodev.themedactivity "ThemedActivity"
  * 2016/01/13 @ 21:01
  *
  * @author Roel Walraven <cytodev@gmail.com>

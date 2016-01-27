@@ -1,4 +1,4 @@
-package com.cytodev.freqalc.activities;
+package io.cytodev.freqalc.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,10 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
-import com.cytodev.freqalc.R;
+import io.cytodev.freqalc.R;
 
 /**
- * com.cytodev.freqalc.activities "Frequency Calculator"
+ * io.cytodev.freqalc.activities "Frequency Calculator"
  * 2016/01/22 @ 16:50
  *
  * @author Roel Walraven <cytodev@gmail.com>

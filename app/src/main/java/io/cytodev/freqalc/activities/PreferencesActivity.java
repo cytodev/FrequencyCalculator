@@ -1,4 +1,4 @@
-package com.cytodev.freqalc.activities;
+package io.cytodev.freqalc.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -9,12 +9,12 @@ import android.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.cytodev.freqalc.R;
-import com.cytodev.freqalc.fragments.NestedPreferenceFragment;
-import com.cytodev.themedactivity.ThemedActivity;
+import io.cytodev.freqalc.R;
+import io.cytodev.freqalc.fragments.NestedPreferenceFragment;
+import io.cytodev.themedactivity.ThemedActivity;
 
 /**
- * com.cytodev.freqalc.activities "Frequency Calculator"
+ * io.cytodev.freqalc.activities "Frequency Calculator"
  * 2016/01/14 @ 13:40
  *
  * @author Roel Walraven <cytodev@gmail.com>

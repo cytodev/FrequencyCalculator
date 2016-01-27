@@ -1,9 +1,9 @@
-package com.cytodev.freqalc.logic;
+package io.cytodev.freqalc.logic;
 
 import android.util.Log;
 
 /**
- * com.cytodev.freqalc.logic "Frequency Calculator"
+ * io.cytodev.freqalc.logic "Frequency Calculator"
  * 2016/01/25 @ 08:53
  *
  * @author Roel Walraven <cytodev@gmail.com>

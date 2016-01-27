@@ -1,4 +1,4 @@
-package com.cytodev.freqalc.activities;
+package io.cytodev.freqalc.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -13,13 +13,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.cytodev.freqalc.R;
-import com.cytodev.freqalc.fragments.BeatsFragment;
-import com.cytodev.freqalc.fragments.HertzFragment;
-import com.cytodev.freqalc.fragments.TapFragment;
-import com.cytodev.freqalc.fragments.TimeFragment;
-import com.cytodev.freqalc.logic.FrequencyCalculator;
-import com.cytodev.themedactivity.ThemedActivity;
+import io.cytodev.freqalc.R;
+import io.cytodev.freqalc.fragments.BeatsFragment;
+import io.cytodev.freqalc.fragments.HertzFragment;
+import io.cytodev.freqalc.fragments.TapFragment;
+import io.cytodev.freqalc.fragments.TimeFragment;
+import io.cytodev.freqalc.logic.FrequencyCalculator;
+import io.cytodev.themedactivity.ThemedActivity;
 
 public class MainActivity extends ThemedActivity {
     private static SharedPreferences preferences;

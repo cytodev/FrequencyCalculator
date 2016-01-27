@@ -1,4 +1,4 @@
-package com.cytodev.freqalc.fragments;
+package io.cytodev.freqalc.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,15 +18,15 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cytodev.freqalc.R;
-import com.cytodev.freqalc.activities.CytoActivity;
-import com.cytodev.freqalc.activities.PreferencesActivity;
+import io.cytodev.freqalc.R;
+import io.cytodev.freqalc.activities.CytoActivity;
+import io.cytodev.freqalc.activities.PreferencesActivity;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 /**
- * com.cytodev.freqalc.fragments "Frequency Calculator"
+ * io.cytodev.freqalc.fragments "Frequency Calculator"
  * 2016/01/14 @ 13:42
  *
  * @author Roel Walraven <cytodev@gmail.com>

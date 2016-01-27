@@ -1,4 +1,4 @@
-package com.cytodev.freqalc.fragments;
+package io.cytodev.freqalc.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.cytodev.freqalc.R;
-import com.cytodev.freqalc.activities.MainActivity;
+import io.cytodev.freqalc.R;
+import io.cytodev.freqalc.activities.MainActivity;
 
 /**
- * com.cytodev.freqalc.fragments "Frequency Calculator"
+ * io.cytodev.freqalc.fragments "Frequency Calculator"
  * 2016/01/25 @ 12:53
  *
  * @author Roel Walraven <cytodev@gmail.com>

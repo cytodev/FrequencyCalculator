@@ -1,6 +1,6 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cytodev.themedactivity">
+    package="io.cytodev.themedactivity">
 
     <application
         android:allowBackup="true"
