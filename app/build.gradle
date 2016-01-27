@@ -1,9 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "io.cytodev.freqalc"
         minSdkVersion 14
@@ -11,7 +15,6 @@ android {
         versionCode 2
         versionName "1.0.2"
     }
-
     buildTypes {
         debug {
             minifyEnabled false
@@ -20,13 +23,13 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
-
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':themedactivity')
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:cardview-v7:23.1.1'
