@@ -21,4 +21,7 @@ __VIBRATE__ is used to give Haptic feedback when you long press the TAP button t
 This project is licensed under the MIT License. You can find a copy of the license [here](https://github.com/CytoDev/FrequencyCalculator/license.md).  
   
 ###Contributions:
-You are more than welcome to submit issues as well as feature requests or just a 'how-ya-doin' in the [issue tracker](https://github.com/CytoDev/FrequencyCalculator/issues/new). Contributing to the project can be done by forking it and submitting a pull request once it's all tested and tidy.
+You are more than welcome to submit issues as well as feature requests or just a 'how-ya-doin' in the [issue tracker](https://github.com/CytoDev/FrequencyCalculator/issues/new). Contributing to the project can be done by forking it and submitting a pull request once it's all tested and tidy.  
+  
+###Downloads:
+You can grab the latest builds from the [releases page](https://github.com/CytoDev/FrequencyCalculator/releases), or get the stable release build from [Google Play<sup><sup>TM</sup></sup>](https://play.google.com/store/apps/details?id=io.cytodev.freqcalc).
