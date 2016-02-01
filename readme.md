@@ -1,6 +1,6 @@
-#<img src="https://raw.githubusercontent.com/CytoDev/FrequencyCalculator/master/art/ic_launcher_whitesmoke.png" alt="logo" width="32" />&nbsp;Frequency Calculator [![Build Status](https://travis-ci.org/CytoDev/FrequencyCalculator.svg?branch=master)](https://travis-ci.org/CytoDev/FrequencyCalculator)  
+#<img src="https://raw.githubusercontent.com/CytoDev/FrequencyCalculator/c12453137c009874161a43e84cc8c57f9f2f8813/art/Hi-res%20icon.png" alt="logo" width="32" />&nbsp;Frequency Calculator [![Build Status](https://travis-ci.org/CytoDev/FrequencyCalculator.svg?branch=master)](https://travis-ci.org/CytoDev/FrequencyCalculator)  
   
-<img src="https://raw.githubusercontent.com/CytoDev/FrequencyCalculator/master/art/headerImage.png" alt="banner" />
+<img src="https://raw.githubusercontent.com/CytoDev/FrequencyCalculator/c12453137c009874161a43e84cc8c57f9f2f8813/art/Feature%20graphic.png" alt="banner" />
   
 FreqCalc makes the conversion between beats per minute, time, and hertz a breeze. Not only does it calculate the value, but it also updates all other values accordingly!  
   ---  
