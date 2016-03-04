@@ -15,15 +15,17 @@ import android.widget.EditText;
 
 import com.crashlytics.android.Crashlytics;
 
-import io.fabric.sdk.android.Fabric;
+import java.util.Date;
 
 import io.cytodev.freqcalc.R;
 import io.cytodev.freqcalc.fragments.BeatsFragment;
 import io.cytodev.freqcalc.fragments.HertzFragment;
 import io.cytodev.freqcalc.fragments.TapFragment;
 import io.cytodev.freqcalc.fragments.TimeFragment;
+import io.cytodev.freqcalc.logic.DateChecker;
 import io.cytodev.freqcalc.logic.FrequencyCalculator;
 import io.cytodev.themedactivity.ThemedActivity;
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends ThemedActivity {
     private static SharedPreferences preferences;
@@ -62,6 +64,10 @@ public class MainActivity extends ThemedActivity {
         setContentView(R.layout.activity_main);
         setupToolbar();
         setupUserInterface();
+
+        if(!getSharedPreferences("FreqCalcShared", 0).getBoolean("hasSeenThankyou", false)) {
+            sayThankyou();
+        }
     }
 
     @Override
@@ -129,6 +135,22 @@ public class MainActivity extends ThemedActivity {
             fragTransaction.replace(R.id.tapView, new TapFragment());
 
         fragTransaction.commit();
+    }
+
+    private void sayThankyou() {
+        Date date = DateChecker.getInstallTime(getPackageManager(), getApplication().getPackageName());
+
+        if(date != null) {
+            long today = new Date().getTime();
+            long installTime = date.getTime();
+
+            if(installTime + 604800 < today) {
+                // show the happy little thank you
+            }
+        }
+
+        // remove the message, never to be seen again. Unless the user clears their storage for this app.
+//        getSharedPreferences("FreqCalcShared", 0).edit().putBoolean("hasSeenThankyou", true).commit();
     }
 
     public void updateVals(String identifier) {
