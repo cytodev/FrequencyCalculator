@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
@@ -152,7 +154,15 @@ public class MainActivity extends ThemedActivity {
                         .setMessage(R.string.dialog_thankyou_message)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // link to play store
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+
+                                try {
+                                    intent.setData(Uri.parse("market://details?id=io.cytodev.freqcalc"));
+                                    startActivity(intent);
+                                } catch(ActivityNotFoundException anfe) {
+                                    intent.setData(Uri.parse("http://play.google.com/store/apps/details?id=io.cytodev.freqcalc"));
+                                    startActivity(intent);
+                                }
                             }
                         })
                         .setNegativeButton(R.string.dialog_thankyou_fuckoff, null)
