@@ -1,8 +1,10 @@
 package io.cytodev.freqcalc.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -144,13 +146,21 @@ public class MainActivity extends ThemedActivity {
             long today = new Date().getTime();
             long installTime = date.getTime();
 
-            if(installTime + 604800 < today) {
-                // show the happy little thank you
+            if(installTime + ((long) 604800) < today) {
+                new AlertDialog.Builder(thisActivity)
+                        .setTitle(R.string.dialog_thankyou_title)
+                        .setMessage(R.string.dialog_thankyou_message)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // link to play store
+                            }
+                        })
+                        .setNegativeButton(R.string.dialog_thankyou_fuckoff, null)
+                        .show();
+
+                getSharedPreferences("FreqCalcShared", 0).edit().putBoolean("hasSeenThankyou", true).commit();
             }
         }
-
-        // remove the message, never to be seen again. Unless the user clears their storage for this app.
-//        getSharedPreferences("FreqCalcShared", 0).edit().putBoolean("hasSeenThankyou", true).commit();
     }
 
     public void updateVals(String identifier) {
