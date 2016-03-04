@@ -9,6 +9,9 @@
     <!-- <dialogs> -->
         <string name="dialog_icon_title">Revert icon colors?</string>
         <string name="dialog_icon_message">Changes the app icon color back to the default theme (White Smoke &amp; Grey). Choosing no will result in the current theme being the app icon color.</string>
+        <string name="dialog_thankyou_title">Hey there!</string>
+        <string name="dialog_thankyou_message">Thanks for using this app for over a week!\nWould you like to give some feedback or suggestions on how to make it even better?</string>
+        <string name="dialog_thankyou_fuckoff">No thanks</string>
     <!-- </dialogs -->
 
     <!-- <preferences> -->
