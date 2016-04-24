@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- general strings -->
-    <string name="app_name">Frequency Calculator</string>
+    <string name="app_name">Calculatora de frecuencia</string>
 
     <!-- <actions> -->
         <string name="action_settings">ajustes</string>
