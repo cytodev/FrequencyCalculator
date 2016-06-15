@@ -2,6 +2,10 @@ package io.cytodev.freqcalc.logic;
 
 import android.util.Log;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Arrays;
+
 /**
  * io.cytodev.freqcalc.logic "Frequency Calculator"
  * 2016/01/25 @ 08:53
@@ -280,9 +284,17 @@ public class FrequencyCalculator {
      * @param number double value to clip
      * @return double value with clipped decimal places
      */
-    public double clipDecimals(double number) {
-        double power = Math.pow(10, this.decimals);
-        return (double) Math.round(number * power) / power;
+    public String clipDecimals(double number) {
+        char[] positions = new char[this.decimals];
+        Arrays.fill(positions, '#');
+
+        if(number != 0) {
+            DecimalFormat df = new DecimalFormat("#." + new String(positions));
+            df.setRoundingMode(RoundingMode.CEILING);
+            return df.format(number);
+        }
+
+        return "0";
     }
 
     /**

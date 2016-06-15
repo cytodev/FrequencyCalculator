@@ -177,25 +177,25 @@ public class MainActivity extends ThemedActivity {
         this.stop = true;
 
         if(!identifier.equals("hz") && findViewById(R.id.freq_input_hertz) != null) {
-            ((EditText) findViewById(R.id.freq_input_hertz)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("hz"))));
+            ((EditText) findViewById(R.id.freq_input_hertz)).setText(freqcalc.clipDecimals(freqcalc.getFreq("hz")));
         }
         if(!identifier.equals("bph") && findViewById(R.id.freq_input_beatsPerHour) != null) {
-            ((EditText) findViewById(R.id.freq_input_beatsPerHour)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("bph"))));
+            ((EditText) findViewById(R.id.freq_input_beatsPerHour)).setText(freqcalc.clipDecimals(freqcalc.getFreq("bph")));
         }
         if(!identifier.equals("bpm") && findViewById(R.id.freq_input_beatsPerMinute) != null) {
-            ((EditText) findViewById(R.id.freq_input_beatsPerMinute)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("bpm"))));
+            ((EditText) findViewById(R.id.freq_input_beatsPerMinute)).setText(freqcalc.clipDecimals(freqcalc.getFreq("bpm")));
         }
         if(!identifier.equals("bps") && findViewById(R.id.freq_input_beatsPerSecond) != null) {
-            ((EditText) findViewById(R.id.freq_input_beatsPerSecond)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("bps"))));
+            ((EditText) findViewById(R.id.freq_input_beatsPerSecond)).setText(freqcalc.clipDecimals(freqcalc.getFreq("bps")));
         }
         if(!identifier.equals("tm") && findViewById(R.id.freq_input_timeMinutes) != null) {
-            ((EditText) findViewById(R.id.freq_input_timeMinutes)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("tm"))));
+            ((EditText) findViewById(R.id.freq_input_timeMinutes)).setText(freqcalc.clipDecimals(freqcalc.getFreq("tm")));
         }
         if(!identifier.equals("ts") && findViewById(R.id.freq_input_timeSeconds) != null) {
-            ((EditText) findViewById(R.id.freq_input_timeSeconds)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("ts"))));
+            ((EditText) findViewById(R.id.freq_input_timeSeconds)).setText(freqcalc.clipDecimals(freqcalc.getFreq("ts")));
         }
         if(!identifier.equals("tms") && findViewById(R.id.freq_input_timeMilis) != null) {
-            ((EditText) findViewById(R.id.freq_input_timeMilis)).setText(Double.toString(freqcalc.clipDecimals(freqcalc.getFreq("tms"))));
+            ((EditText) findViewById(R.id.freq_input_timeMilis)).setText(freqcalc.clipDecimals(freqcalc.getFreq("tms")));
         }
 
         this.stop = false;
