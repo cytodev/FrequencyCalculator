@@ -11,4 +11,9 @@
         android:title="@string/pref_about_license"
         android:icon="?attr/ic_copyright" />
 
+    <Preference
+        android:key="pref_about_translations"
+        android:title="@string/pref_about_translations"
+        android:icon="?attr/ic_translations"/>
+
 </PreferenceScreen>

@@ -4,6 +4,7 @@
     <attr name="ic_about"          format="reference" />
     <attr name="ic_cytodev"        format="reference" />
     <attr name="ic_copyright"      format="reference" />
+    <attr name="ic_translations"   format="reference" />
     <attr name="ic_appearance"     format="reference" />
     <attr name="ic_feedback"       format="reference" />
     <attr name="ic_general"        format="reference" />
@@ -14,6 +15,7 @@
         <item name="ic_about">@drawable/ic_about_dark</item>
         <item name="ic_cytodev">@drawable/ic_cytodev_dark</item>
         <item name="ic_copyright">@drawable/ic_copyright_dark</item>
+        <item name="ic_translations">@drawable/ic_translations_dark</item>
         <item name="ic_appearance">@drawable/ic_appearance_dark</item>
         <item name="ic_general">@drawable/ic_general_dark</item>
         <item name="ic_interface">@drawable/ic_interface_dark</item>
@@ -25,6 +27,7 @@
         <item name="ic_about">@drawable/ic_about_light</item>
         <item name="ic_cytodev">@drawable/ic_cytodev_light</item>
         <item name="ic_copyright">@drawable/ic_copyright_light</item>
+        <item name="ic_translations">@drawable/ic_translations_light</item>
         <item name="ic_appearance">@drawable/ic_appearance_light</item>
         <item name="ic_general">@drawable/ic_general_light</item>
         <item name="ic_interface">@drawable/ic_interface_light</item>

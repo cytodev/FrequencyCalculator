@@ -28,6 +28,10 @@
             android:name=".activities.CytoActivity"
             android:theme="@style/Theme.Cytodev" />
 
+        <activity
+            android:name=".activities.TranslationsActivity"
+            android:label="@string/pref_about_translations"/>
+
         <activity-alias
             android:icon="@mipmap/ic_launcher_whitesmoke"
             android:name=".activities.MainActivity.WhiteSmoke"
