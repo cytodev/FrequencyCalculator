@@ -26,7 +26,6 @@ import io.cytodev.freqcalc.fragments.BeatsFragment;
 import io.cytodev.freqcalc.fragments.HertzFragment;
 import io.cytodev.freqcalc.fragments.TapFragment;
 import io.cytodev.freqcalc.fragments.TimeFragment;
-import io.cytodev.freqcalc.logic.DateChecker;
 import io.cytodev.freqcalc.logic.FrequencyCalculator;
 import io.cytodev.themedactivity.ThemedActivity;
 import io.fabric.sdk.android.Fabric;
@@ -142,34 +141,35 @@ public class MainActivity extends ThemedActivity {
     }
 
     private void sayThankyou() {
-        Date date = DateChecker.getInstallTime(getPackageManager(), getApplication().getPackageName());
+        long firstUse = getSharedPreferences("FreqCalcShared", 0).getLong("firstUse", 0);
+        long today = new Date().getTime();
 
-        if(date != null) {
-            long today = new Date().getTime();
-            long installTime = date.getTime();
+        if(firstUse == 0) {
+            getSharedPreferences("FreqCalcShared", 0).edit().putLong("firstUse", new Date().getTime()).commit();
+            return;
+        }
 
-            if(installTime + ((long) 604800) < today) {
-                new AlertDialog.Builder(thisActivity)
-                        .setTitle(R.string.dialog_thankyou_title)
-                        .setMessage(R.string.dialog_thankyou_message)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(Intent.ACTION_VIEW);
+        if(firstUse < today - ((long) 604800000)) {
+            new AlertDialog.Builder(thisActivity)
+                    .setTitle(R.string.dialog_thankyou_title)
+                    .setMessage(R.string.dialog_thankyou_message)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
 
-                                try {
-                                    intent.setData(Uri.parse("market://details?id=io.cytodev.freqcalc"));
-                                    startActivity(intent);
-                                } catch(ActivityNotFoundException anfe) {
-                                    intent.setData(Uri.parse("http://play.google.com/store/apps/details?id=io.cytodev.freqcalc"));
-                                    startActivity(intent);
-                                }
+                            try {
+                                intent.setData(Uri.parse("market://details?id=io.cytodev.freqcalc"));
+                                startActivity(intent);
+                            } catch(ActivityNotFoundException anfe) {
+                                intent.setData(Uri.parse("http://play.google.com/store/apps/details?id=io.cytodev.freqcalc"));
+                                startActivity(intent);
                             }
-                        })
-                        .setNegativeButton(R.string.dialog_thankyou_fuckoff, null)
-                        .show();
+                        }
+                    })
+                    .setNegativeButton(R.string.dialog_thankyou_fuckoff, null)
+                    .show();
 
-                getSharedPreferences("FreqCalcShared", 0).edit().putBoolean("hasSeenThankyou", true).commit();
-            }
+            getSharedPreferences("FreqCalcShared", 0).edit().putBoolean("hasSeenThankyou", true).commit();
         }
     }
 
