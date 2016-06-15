@@ -56,15 +56,6 @@
             <item>Rosa Hollywood y púrpura imperial</item>
             <item>Verde primavera y azul curso del agua</item>
         </string-array>
-        <string-array name="pref_appearance_themes_values">
-            <item>WhiteSmoke</item>
-            <item>DodgerBlue</item>
-            <item>SpringBud</item>
-            <item>ElectricPurple</item>
-            <item>OrangePeel</item>
-            <item>HollywoodCerise</item>
-            <item>SpringGreen</item>
-        </string-array>
         <string name="pref_appearance_theme_dark">Usar tema oscuro</string>
         <string name="pref_appearance_theme_dark_sum">Usa un fondo oscuro</string>
         <string name="pref_appearance_icon">Icono personalizado</string>
