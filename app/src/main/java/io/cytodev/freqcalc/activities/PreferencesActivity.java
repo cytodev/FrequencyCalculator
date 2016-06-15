@@ -30,9 +30,9 @@ public class PreferencesActivity extends ThemedActivity {
         thisActivity = PreferencesActivity.this;
         manager      = getFragmentManager();
 
-        SharedPreferences preferences  = PreferenceManager.getDefaultSharedPreferences(thisActivity);
-        String            themeName    = preferences.getString("pref_appearance_theme", "WhiteSmoke");
-        boolean           themeLight   = !preferences.getBoolean("pref_appearance_theme_dark", false);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(thisActivity);
+        String            themeName   = preferences.getString("pref_appearance_theme", "WhiteSmoke");
+        boolean           themeLight  = !preferences.getBoolean("pref_appearance_theme_dark", false);
 
         if(!super.getCurrentThemeName().equals(themeName)) {
             super.setTheme(themeLight, themeName);

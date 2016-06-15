@@ -25,6 +25,7 @@ import java.io.InputStream;
 import io.cytodev.freqcalc.R;
 import io.cytodev.freqcalc.activities.CytoActivity;
 import io.cytodev.freqcalc.activities.PreferencesActivity;
+import io.cytodev.freqcalc.activities.TranslationsActivity;
 
 /**
  * io.cytodev.freqcalc.fragments "Frequency Calculator"
@@ -104,18 +105,6 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         fragment.setArguments(args);
 
         return fragment;
-    }
-
-    public static int getSubTitle() {
-        Log.v(TAG, "Querying subTitle");
-
-        return NestedPreferenceFragment.subTitle;
-    }
-
-    public static void setSubTitle(int subTitle) {
-        Log.v(TAG, "Applying subTitle");
-
-        NestedPreferenceFragment.subTitle = subTitle;
     }
 
     private void attachClickListener(String key, Preference.OnPreferenceClickListener listener) {
@@ -213,9 +202,6 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         final Preference.OnPreferenceClickListener licenseLauncher = new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Log.v(TAG, "Called onPreferenceClick (dialogLauncher)");
-                Log.d(TAG, "Clicked on " + preference.getKey());
-
                 AlertDialog.Builder licenseDialog = new AlertDialog.Builder(c);
                 licenseDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
@@ -252,11 +238,23 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                 return true;
             }
         };
+        final Preference.OnPreferenceClickListener translationsLauncher = new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference){
+                PreferencesActivity prefs = (PreferencesActivity) getActivity();
+                Intent translationsLauncher = new Intent(prefs, TranslationsActivity.class);
+                translationsLauncher.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                prefs.startActivity(translationsLauncher);
+                prefs.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                return true;
+            }
+        };
 
         Log.v(TAG, "Attaching listeners");
         attachClickListener("pref_cat_about", nestedListener);
         attachClickListener("pref_about_developer", cytoLauncher);
         attachClickListener("pref_about_license", licenseLauncher);
+        attachClickListener("pref_about_translations", translationsLauncher);
         attachClickListener("pref_cat_appearance", nestedListener);
         attachClickListener("pref_cat_general", nestedListener);
         attachClickListener("pref_cat_interface", nestedListener);

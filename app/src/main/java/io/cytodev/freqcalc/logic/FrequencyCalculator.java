@@ -64,7 +64,7 @@ public class FrequencyCalculator {
      * @param identifier the variable to set
      * @param value the value to set it to
      */
-    public void setFreq(String identifier, double value) {
+    private void setFreq(String identifier, double value) {
         Log.d(TAG, "Setting " + identifier);
 
         switch(identifier) {
@@ -189,7 +189,7 @@ public class FrequencyCalculator {
      * @param bpm double beats per minutes
      * @return double hz
      */
-    public double calculateHertz(double tms, double bpm) {
+    private double calculateHertz(double tms, double bpm) {
         if(tms != 0.000) {
             return 1000 / tms;
         } else if(bpm != 0.000) {
@@ -206,7 +206,7 @@ public class FrequencyCalculator {
      * @param bph double beats per hour
      * @return double bpm
      */
-    public double calculateBeatsPerMinute(double bps, double bph) {
+    private double calculateBeatsPerMinute(double bps, double bph) {
         if(bps != 0.000) {
             return bps * 60;
         } else if(bph != 0.000) {
@@ -222,7 +222,7 @@ public class FrequencyCalculator {
      * @param bpm double beats per minute
      * @return double bph
      */
-    public double calculateBeatsPerHour(double bpm) {
+    private double calculateBeatsPerHour(double bpm) {
         if(bpm != 0.000) {
             return bpm * 60;
         } else {
@@ -236,7 +236,7 @@ public class FrequencyCalculator {
      * @param ts double time in seconds
      * @return double tms
      */
-    public double calculateMinutes(double ts) {
+    private double calculateMinutes(double ts) {
         if(ts != 0.000) {
             return ts / 60;
         } else {
@@ -251,7 +251,7 @@ public class FrequencyCalculator {
      * @param tm double time in minutes
      * @return double ts
      */
-    public double calculateSeconds(double tms, double tm) {
+    private double calculateSeconds(double tms, double tm) {
         if(tms != 0.000) {
             return tms / 1000;
         } else if(tm != 0.000) {
@@ -268,7 +268,7 @@ public class FrequencyCalculator {
      * @param ts double time in seconds
      * @return double tms
      */
-    public double calculateMiliseconds(double hz, double ts) {
+    private double calculateMiliseconds(double hz, double ts) {
         if(hz != 0.000) {
             return 1000 / hz;
         } else if(ts != 0.000) {

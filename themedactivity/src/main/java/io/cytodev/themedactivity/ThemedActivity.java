@@ -20,11 +20,12 @@ import java.util.Map;
 public class ThemedActivity extends AppCompatActivity {
     private final static String TAG = ThemedActivity.class.getSimpleName();
 
+    private final Map<String, Integer> lightThemes = new HashMap<>();
+    private final Map<String, Integer> darkThemes = new HashMap<>();
+
     private Activity             thisActivity        = null;
     private int                  currentTheme        = -1;
     private boolean              currentThemeIsLight = false;
-    private Map<String, Integer> lightThemes         = new HashMap<>();
-    private Map<String, Integer> darkThemes          = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class ThemedActivity extends AppCompatActivity {
     /**
      * Inserts the default themes from ThemedActivity's resources
      */
-    public void setDefaults() {
+    protected void setDefaults() {
         Log.v(TAG, "Setting up default themes");
         addTheme(true,  "WhiteSmoke",      R.style.Theme_Cyto_Light_WhiteSmoke);
         addTheme(true,  "DodgerBlue",      R.style.Theme_Cyto_Light_DodgerBlue);
@@ -62,7 +63,7 @@ public class ThemedActivity extends AppCompatActivity {
      * @param light     boolean
      * @param themeName String
      */
-    public void setTheme(boolean light, String themeName) {
+    protected void setTheme(boolean light, String themeName) {
         Log.d(TAG, "Setting theme to \""+((light) ? "Light" : "Dark")+themeName+"\"");
 
         currentTheme        = getTheme(light, themeName);
@@ -76,7 +77,7 @@ public class ThemedActivity extends AppCompatActivity {
      *
      * @return resource id of the theme
      */
-    public int getCurrentTheme() {
+    private int getCurrentTheme() {
         return currentTheme;
     }
 
@@ -85,7 +86,7 @@ public class ThemedActivity extends AppCompatActivity {
      *
      * @return true if the current theme is light, false if it's not
      */
-    public boolean isCurrentThemeLight() {
+    private boolean isCurrentThemeLight() {
         return currentThemeIsLight;
     }
 
@@ -94,7 +95,7 @@ public class ThemedActivity extends AppCompatActivity {
      *
      * @return name of the theme
      */
-    public String getCurrentThemeName() {
+    protected String getCurrentThemeName() {
         return getTheme(isCurrentThemeLight(), getCurrentTheme());
     }
 
@@ -105,7 +106,7 @@ public class ThemedActivity extends AppCompatActivity {
      * @param themeName  name of the theme
      * @param themeResID resource id of the theme
      */
-    public void addTheme(boolean light, String themeName, int themeResID) {
+    private void addTheme(boolean light, String themeName, int themeResID) {
         Log.d(TAG, "Adding new theme \""+((light) ? "Light." : "Dark.")+themeName+"\"");
 
         if(light) {
@@ -122,7 +123,7 @@ public class ThemedActivity extends AppCompatActivity {
      * @param themeName the name of the theme
      * @return the resource id of the theme
      */
-    public int getTheme(boolean light, String themeName) {
+    private int getTheme(boolean light, String themeName) {
         Log.d(TAG, "Getting resid of \""+((light) ? "Light." : "Dark.")+themeName+"\"");
 
         return (light) ? lightThemes.get(themeName) : darkThemes.get(themeName);
@@ -135,7 +136,7 @@ public class ThemedActivity extends AppCompatActivity {
      * @param themeResID the resource id of the theme
      * @return the name of the theme
      */
-    public String getTheme(boolean light, int themeResID) {
+    private String getTheme(boolean light, int themeResID) {
         Log.v(TAG, "Searching for "+((light) ? "light" : "dark")+" theme with resid "+Integer.toString(themeResID));
         Iterator<Map.Entry<String, Integer>> data = (light) ? lightThemes.entrySet().iterator() : darkThemes.entrySet().iterator();
 
@@ -170,7 +171,7 @@ public class ThemedActivity extends AppCompatActivity {
      * @param color integer value of a color
      * @return darkness value as double
      */
-    public double calculateDarkness(int color) {
+    private double calculateDarkness(int color) {
         int c = (int) Long.parseLong(Integer.toString(color), 16);
         int r = (c >> 16) & 0xFF;
         int g = (c >>  8) & 0xFF;
