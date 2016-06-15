@@ -12,4 +12,4 @@ Características:
   
 Detalles de permisos:  
 Internet se utiliza para Crashlytics. Esto nos ayuda a identificar los problemas tan pronto como usted los experimenta.  
-VIBRACIÓN se utiliza para dar retroalimentación táctil cuando se pulse largo el botón PULSA para borrar los promedios.
+VIBRACIÓN se utiliza para dar retroalimentación táctil cuando se pulse largo el botón PULSA para borrar los promedios.  

@@ -12,4 +12,4 @@ Features:
   
 Permission details:  
 INTERNET is used for Crashlytics. This helps us to identify issues as soon as you experience them.  
-VIBRATE is used to give Haptic feedback when you long press the TAP button to clear the averages.
+VIBRATE is used to give Haptic feedback when you long press the TAP button to clear the averages.  
