@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="pref_interface_beats"
+        android:title="@string/pref_interface_beats"
+        android:summary="@string/pref_interface_beats_sum"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="pref_interface_time"
+        android:title="@string/pref_interface_time"
+        android:summary="@string/pref_interface_time_sum"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="pref_interface_tap"
+        android:title="@string/pref_interface_tap"
+        android:summary="@string/pref_interface_tap_sum"
+        android:defaultValue="true" />
+
+</PreferenceScreen>

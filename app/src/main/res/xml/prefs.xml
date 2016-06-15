@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="pref_cat_about"
+        android:title="@string/pref_cat_about"
+        android:icon="?attr/ic_about" />
+
+    <Preference
+        android:key="pref_cat_appearance"
+        android:title="@string/pref_cat_appearance"
+        android:icon="?attr/ic_appearance" />
+
+    <Preference
+        android:key="pref_cat_general"
+        android:title="@string/pref_cat_general"
+        android:icon="?attr/ic_general"/>
+
+    <Preference
+        android:key="pref_cat_interface"
+        android:title="@string/pref_cat_interface"
+        android:icon="?attr/ic_interface"/>
+
+</PreferenceScreen>
