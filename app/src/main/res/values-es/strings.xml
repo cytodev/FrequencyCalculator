@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- general strings -->
+    <string name="app_name">Frequency Calculator</string>
+    <string name="pref_about_developer">cytodev</string>
+    <string-array name="pref_appearance_themes_values">
+        <item>WhiteSmoke</item>
+        <item>DodgerBlue</item>
+        <item>SpringBud</item>
+        <item>ElectricPurple</item>
+        <item>OrangePeel</item>
+        <item>HollywoodCerise</item>
+        <item>SpringGreen</item>
+    </string-array>
+    <string-array name="pref_general_decimals_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="pref_general_averagenum_values">
+        <item>4</item>
+        <item>8</item>
+        <item>16</item>
+        <item>32</item>
+        <item>-1</item>
+    </string-array>
+
     <!-- <actions> -->
         <string name="action_settings">ajustes</string>
     <!-- </actions> -->
