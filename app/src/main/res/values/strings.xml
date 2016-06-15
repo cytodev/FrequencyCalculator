@@ -16,18 +16,21 @@
 
     <!-- <preferences> -->
         <string name="pref_cat_about">about</string>
-        <string name="pref_about_developer">CytoDev</string>
+        <string name="pref_about_developer">cytodev</string>
+        <string name="pref_about_developer_github">Check me out on GitHub</string>
         <string name="pref_about_license">license</string>
+        <string name="pref_about_translations">translations</string>
+        <string name="pref_about_translations_help">help translate this app</string>
         <string name="pref_cat_appearance">appearance</string>
-        <string name="pref_appearance_theme">Theme</string>
+        <string name="pref_appearance_theme">theme</string>
         <string-array name="pref_appearance_themes">
-            <item>White Smoke &amp; Grey (default)</item>
-            <item>Dodger Blue &amp; Blue Lagoon</item>
-            <item>Spring Bud &amp; Olive Green</item>
-            <item>Electric Purple &amp; Indigo</item>
-            <item>Orange Peel &amp; Olive Brown</item>
-            <item>Hollywood Cerise &amp; Tyrian Purple</item>
-            <item>Spring Green &amp; Watercourse</item>
+            <item>white smoke &amp; grey (default)</item>
+            <item>dodger blue &amp; blue Lagoon</item>
+            <item>spring bud &amp; olive green</item>
+            <item>electric purple &amp; indigo</item>
+            <item>orange peel &amp; olive brown</item>
+            <item>hollywood cerise &amp; tyrian purple</item>
+            <item>spring green &amp; watercourse</item>
         </string-array>
         <string-array name="pref_appearance_themes_values">
             <item>WhiteSmoke</item>
@@ -38,10 +41,10 @@
             <item>HollywoodCerise</item>
             <item>SpringGreen</item>
         </string-array>
-        <string name="pref_appearance_theme_dark">Use dark theme</string>
-        <string name="pref_appearance_theme_dark_sum">Uses a dark background</string>
-        <string name="pref_appearance_icon">Themed icon</string>
-        <string name="pref_appearance_icon_sum">Changes icon color based on theme</string>
+        <string name="pref_appearance_theme_dark">use dark theme</string>
+        <string name="pref_appearance_theme_dark_sum">uses a dark background</string>
+        <string name="pref_appearance_icon">themed icon</string>
+        <string name="pref_appearance_icon_sum">changes icon color based on theme</string>
         <string name="pref_cat_general">general settings</string>
         <string name="pref_general_decimals">decimal precision</string>
         <string-array name="pref_general_decimals_humanvalues">
@@ -95,18 +98,18 @@
     <!-- </placeholders> -->
 
     <!-- <calculator-strings> -->
-        <string name="freq_hertz">Hertz</string>
-        <string name="freq_beats">Beats:</string>
+        <string name="freq_hertz">hertz</string>
+        <string name="freq_beats">beats:</string>
         <string name="freq_beatsPerHour">beats per hour</string>
         <string name="freq_beatsPerMinute">beats per minute</string>
         <string name="freq_beatsPerSecond">beats per second</string>
-        <string name="freq_time">Time:</string>
+        <string name="freq_time">time:</string>
         <string name="freq_timeMilis">milliseconds</string>
         <string name="freq_timeSeconds">seconds</string>
         <string name="freq_timeMinutes">minutes</string>
-        <string name="freq_tap">Tap the bpm:</string>
+        <string name="freq_tap">tap the bpm:</string>
         <string name="freq_input_tap">TAP</string>
-        <string name="freq_input_tap_cleared">Cleared bpm average.</string>
+        <string name="freq_input_tap_cleared">cleared bpm average.</string>
     <!-- </calculator-strings> -->
 
 </resources>
