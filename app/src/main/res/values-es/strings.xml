@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- general strings -->
-    <string name="app_name">Calculatora de frecuencia</string>
+    <string name="app_name">Calculatora de Frecuencia</string>
 
     <!-- <actions> -->
         <string name="action_settings">ajustes</string>
@@ -17,32 +17,22 @@
 
     <!-- <preferences> -->
         <string name="pref_cat_about">sobre nosotros</string>
-        <string name="pref_about_developer">CytoDev</string>
         <string name="pref_about_license">licencia</string>
         <string name="pref_cat_appearance">apariencia</string>
-        <string name="pref_appearance_theme">Tema</string>
+        <string name="pref_appearance_theme">tema</string>
         <string-array name="pref_appearance_themes">
-            <item>Blanco humo y gris (por defecto)</item>
-            <item>Azul Dodger y laguna azul</item>
-            <item>Brote de primavera y verde oliva</item>
-            <item>Púrpura eléctrico y añil</item>
-            <item>Cáscara de naranja y marrón oliva</item>
-            <item>Rosa Hollywood y púrpura imperial</item>
-            <item>Verde primavera y azul curso del agua</item>
+            <item>blanco humo y gris (por defecto)</item>
+            <item>azul dodger y laguna azul</item>
+            <item>brote de primavera y verde oliva</item>
+            <item>púrpura eléctrico y añil</item>
+            <item>cáscara de naranja y marrón oliva</item>
+            <item>rosa hollywood y púrpura imperial</item>
+            <item>verde primavera y azul curso del agua</item>
         </string-array>
-        <string-array name="pref_appearance_themes_values">
-            <item>WhiteSmoke</item>
-            <item>DodgerBlue</item>
-            <item>SpringBud</item>
-            <item>ElectricPurple</item>
-            <item>OrangePeel</item>
-            <item>HollywoodCerise</item>
-            <item>SpringGreen</item>
-        </string-array>
-        <string name="pref_appearance_theme_dark">Usar tema oscuro</string>
-        <string name="pref_appearance_theme_dark_sum">Usa un fondo oscuro</string>
-        <string name="pref_appearance_icon">Icono personalizado</string>
-        <string name="pref_appearance_icon_sum">Cambia el color del icono basado en el tema</string>
+        <string name="pref_appearance_theme_dark">usar tema oscuro</string>
+        <string name="pref_appearance_theme_dark_sum">usa un fondo oscuro</string>
+        <string name="pref_appearance_icon">icono personalizado</string>
+        <string name="pref_appearance_icon_sum">cambia el color del icono basado en el tema</string>
         <string name="pref_cat_general">ajustes generales</string>
         <string name="pref_general_decimals">precisión decimal</string>
         <string-array name="pref_general_decimals_humanvalues">
@@ -75,18 +65,18 @@
     <!-- </preferences> -->
 
     <!-- <calculator-strings> -->
-        <string name="freq_hertz">Hercios</string>
-        <string name="freq_beats">Pulsaciones:</string>
+        <string name="freq_hertz">hercios</string>
+        <string name="freq_beats">pulsaciones:</string>
         <string name="freq_beatsPerHour">pulsaciones por hora</string>
         <string name="freq_beatsPerMinute">pulsaciones por minuto</string>
         <string name="freq_beatsPerSecond">pulsaciones por segundo</string>
-        <string name="freq_time">Tiempo:</string>
+        <string name="freq_time">tiempo:</string>
         <string name="freq_timeMilis">milisegundos</string>
         <string name="freq_timeSeconds">segundos</string>
         <string name="freq_timeMinutes">minutos</string>
-        <string name="freq_tap">Pulsa para calcular:</string>
+        <string name="freq_tap">pulsa para calcular:</string>
         <string name="freq_input_tap">PULSA</string>
-        <string name="freq_input_tap_cleared">Borrada la media de pulsaciones.</string>
+        <string name="freq_input_tap_cleared">borrada la media de pulsaciones.</string>
     <!-- </calculator-strings> -->
 
 </resources>
