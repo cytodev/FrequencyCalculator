@@ -281,10 +281,10 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
         if(average != null) {
             CharSequence[] averageEntries = {
-                    getResources().getQuantityString(R.plurals.plural_decimals, 1, 1),
-                    getResources().getQuantityString(R.plurals.plural_decimals, 2, 2),
-                    getResources().getQuantityString(R.plurals.plural_decimals, 3, 3),
-                    getResources().getQuantityString(R.plurals.plural_decimals, 4, 4),
+                    getResources().getQuantityString(R.plurals.plural_taps, 1, 1),
+                    getResources().getQuantityString(R.plurals.plural_taps, 2, 2),
+                    getResources().getQuantityString(R.plurals.plural_taps, 3, 3),
+                    getResources().getQuantityString(R.plurals.plural_taps, 4, 4),
                     getResources().getString(R.string.unlimited)
             };
             average.setEntries(averageEntries);
