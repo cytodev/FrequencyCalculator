@@ -166,7 +166,7 @@ public class MainActivity extends ThemedActivity {
                             }
                         }
                     })
-                    .setNegativeButton(R.string.dialog_thankyou_fuckoff, null)
+                    .setNegativeButton(R.string.dialog_thankyou_nothanks, null)
                     .show();
 
             getSharedPreferences("FreqCalcShared", 0).edit().putBoolean("hasSeenThankyou", true).commit();
