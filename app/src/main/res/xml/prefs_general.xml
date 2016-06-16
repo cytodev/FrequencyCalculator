@@ -4,7 +4,7 @@
     <ListPreference
         android:key="pref_general_decimals"
         android:title="@string/pref_general_decimals"
-        android:entries="@array/pref_general_decimals_humanvalues"
+        android:entries="@array/pref_general_decimals_values"
         android:entryValues="@array/pref_general_decimals_values"
         android:summary="%s"
         android:defaultValue="3" />
@@ -18,7 +18,7 @@
     <ListPreference
         android:key="pref_general_averagenum"
         android:title="@string/pref_general_averagenum"
-        android:entries="@array/pref_general_averagenum_humanvalues"
+        android:entries="@array/pref_general_averagenum_values"
         android:entryValues="@array/pref_general_averagenum_values"
         android:summary="%s"
         android:defaultValue="4" />

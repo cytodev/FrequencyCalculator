@@ -45,25 +45,24 @@
         <string name="pref_appearance_icon_sum">changes icon color based on theme</string>
         <string name="pref_cat_general">general settings</string>
         <string name="pref_general_decimals">decimal precision</string>
-        <string-array name="pref_general_decimals_humanvalues">
-            <item>1 decimal</item>
-            <item>2 decimals</item>
-            <item>3 decimals</item>
-            <item>4 decimals</item>
-            <item>5 decimals</item>
-            <item>6 decimals</item>
-            <item>7 decimals</item>
-        </string-array>
+        <plurals name="plural_decimals">
+            <item quantity="one">%d decimal</item>
+            <item quantity="two">%d decimals</item>
+            <item quantity="few">%d decimals</item>
+            <item quantity="many">%d decimals</item>
+            <item quantity="other">%d decimals</item>
+        </plurals>
         <string name="pref_general_average">average bpm tap</string>
         <string name="pref_general_average_sum">calculates the bpm based on an average taps</string>
         <string name="pref_general_averagenum">number of taps to take as average</string>
-        <string-array name="pref_general_averagenum_humanvalues">
-            <item>4 taps</item>
-            <item>8 taps</item>
-            <item>16 taps</item>
-            <item>32 taps</item>
-            <item>unlimited</item>
-        </string-array>
+        <plurals name="plural_taps">
+            <item quantity="one">%d tap</item>
+            <item quantity="two">%d taps</item>
+            <item quantity="few">%d taps</item>
+            <item quantity="many">%d taps</item>
+            <item quantity="other">%d taps</item>
+        </plurals>
+        <string name="unlimited">unlimited</string>
         <string name="pref_general_averagenum_unlimitedHelp">long press tap button to clear average</string>
         <string name="pref_cat_interface">interface</string>
         <string name="pref_interface_beats">show beats</string>

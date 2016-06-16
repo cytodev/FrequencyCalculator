@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -56,6 +57,7 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         }
 
         setupListeners();
+        setPlurals();
     }
 
     @Override
@@ -258,6 +260,35 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         attachClickListener("pref_cat_appearance", nestedListener);
         attachClickListener("pref_cat_general", nestedListener);
         attachClickListener("pref_cat_interface", nestedListener);
+    }
+
+    private void setPlurals() {
+        ListPreference decimals = (ListPreference) findPreference("pref_general_decimals");
+        ListPreference average = (ListPreference) findPreference("pref_general_averagenum");
+
+        if(decimals != null) {
+            CharSequence[] decimalEntries = {
+                    getResources().getQuantityString(R.plurals.plural_decimals, 1, 1),
+                    getResources().getQuantityString(R.plurals.plural_decimals, 2, 2),
+                    getResources().getQuantityString(R.plurals.plural_decimals, 3, 3),
+                    getResources().getQuantityString(R.plurals.plural_decimals, 4, 4),
+                    getResources().getQuantityString(R.plurals.plural_decimals, 5, 5),
+                    getResources().getQuantityString(R.plurals.plural_decimals, 6, 6),
+                    getResources().getQuantityString(R.plurals.plural_decimals, 7, 7)
+            };
+            decimals.setEntries(decimalEntries);
+        }
+
+        if(average != null) {
+            CharSequence[] averageEntries = {
+                    getResources().getQuantityString(R.plurals.plural_decimals, 1, 1),
+                    getResources().getQuantityString(R.plurals.plural_decimals, 2, 2),
+                    getResources().getQuantityString(R.plurals.plural_decimals, 3, 3),
+                    getResources().getQuantityString(R.plurals.plural_decimals, 4, 4),
+                    getResources().getString(R.string.unlimited)
+            };
+            average.setEntries(averageEntries);
+        }
     }
 
     private void changeTheme(boolean revert, boolean iconChange) {
