@@ -1,35 +1,5 @@
 <resources>
 
-    <!-- general strings, no need to translate -->
-        <string name="app_name">Frequency Calculator</string>
-        <string name="pref_about_developer">cytodev</string>
-        <string-array name="pref_appearance_themes_values">
-            <item>WhiteSmoke</item>
-            <item>DodgerBlue</item>
-            <item>SpringBud</item>
-            <item>ElectricPurple</item>
-            <item>OrangePeel</item>
-            <item>HollywoodCerise</item>
-            <item>SpringGreen</item>
-        </string-array>
-        <string-array name="pref_general_decimals_values">
-            <item>1</item>
-            <item>2</item>
-            <item>3</item>
-            <item>4</item>
-            <item>5</item>
-            <item>6</item>
-            <item>7</item>
-        </string-array>
-        <string-array name="pref_general_averagenum_values">
-            <item>4</item>
-            <item>8</item>
-            <item>16</item>
-            <item>32</item>
-            <item>-1</item>
-        </string-array>
-    <!-- </> -->
-
     <!-- <actions> -->
         <string name="action_settings">settings</string>
     <!-- </actions> -->
@@ -39,7 +9,7 @@
         <string name="dialog_icon_message">Changes the app icon color back to the default theme (White Smoke &amp; Grey). Choosing no will result in the current theme being the app icon color.</string>
         <string name="dialog_thankyou_title">Hey there!</string>
         <string name="dialog_thankyou_message">Thanks for using this app for over a week!\nWould you like to give some feedback or suggestions on how to make it even better?</string>
-        <string name="dialog_thankyou_fuckoff">No thanks</string>
+        <string name="dialog_thankyou_nothanks">No thanks</string>
     <!-- </dialogs -->
 
     <!-- <preferences> -->
@@ -65,25 +35,24 @@
         <string name="pref_appearance_icon_sum">changes icon color based on theme</string>
         <string name="pref_cat_general">general settings</string>
         <string name="pref_general_decimals">decimal precision</string>
-        <string-array name="pref_general_decimals_humanvalues">
-            <item>1 decimal</item>
-            <item>2 decimals</item>
-            <item>3 decimals</item>
-            <item>4 decimals</item>
-            <item>5 decimals</item>
-            <item>6 decimals</item>
-            <item>7 decimals</item>
-        </string-array>
+        <plurals name="plural_decimals">
+            <item quantity="one">%d decimal</item>
+            <item quantity="two">%d decimals</item>
+            <item quantity="few">%d decimals</item>
+            <item quantity="many">%d decimals</item>
+            <item quantity="other">%d decimals</item>
+        </plurals>
         <string name="pref_general_average">average bpm tap</string>
         <string name="pref_general_average_sum">calculates the bpm based on an average taps</string>
         <string name="pref_general_averagenum">number of taps to take as average</string>
-        <string-array name="pref_general_averagenum_humanvalues">
-            <item>4 taps</item>
-            <item>8 taps</item>
-            <item>16 taps</item>
-            <item>32 taps</item>
-            <item>unlimited</item>
-        </string-array>
+        <plurals name="plural_taps">
+            <item quantity="one">%d tap</item>
+            <item quantity="two">%d taps</item>
+            <item quantity="few">%d taps</item>
+            <item quantity="many">%d taps</item>
+            <item quantity="other">%d taps</item>
+        </plurals>
+        <string name="unlimited">unlimited</string>
         <string name="pref_general_averagenum_unlimitedHelp">long press tap button to clear average</string>
         <string name="pref_cat_interface">interface</string>
         <string name="pref_interface_beats">show beats</string>
@@ -93,11 +62,6 @@
         <string name="pref_interface_tap">show beat tap</string>
         <string name="pref_interface_tap_sum">shows the tap button</string>
     <!-- </preferences> -->
-
-    <!-- <placeholders> -->
-        <string name="placeholder_icon">icon</string>
-        <string name="placeholder_string">string</string>
-    <!-- </placeholders> -->
 
     <!-- <calculator-strings> -->
         <string name="freq_hertz">hertz</string>
