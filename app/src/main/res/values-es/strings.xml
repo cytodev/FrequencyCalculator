@@ -36,25 +36,24 @@
         <string name="pref_appearance_icon_sum">Cambia el color del icono basado en el tema</string>
         <string name="pref_cat_general">ajustes generales</string>
         <string name="pref_general_decimals">precisión decimal</string>
-        <string-array name="pref_general_decimals_humanvalues">
-            <item>1 decimal</item>
-            <item>2 decimales</item>
-            <item>3 decimales</item>
-            <item>4 decimales</item>
-            <item>5 decimales</item>
-            <item>6 decimales</item>
-            <item>7 decimales</item>
-        </string-array>
+        <plurals name="plural_decimals">
+            <item quantity="one">%d decimal</item>
+            <item quantity="two">%d decimales</item>
+            <item quantity="few">%d decimales</item>
+            <item quantity="many">%d decimales</item>
+            <item quantity="other">%d decimales</item>
+        </plurals>
         <string name="pref_general_average">media de pulsaciones por minuto</string>
         <string name="pref_general_average_sum">calcula las pulsaciones por minuto basados en la media de pulsaciones</string>
         <string name="pref_general_averagenum">número de pulsaciones para sacar la media</string>
-        <string-array name="pref_general_averagenum_humanvalues">
-            <item>4 pulsaciones</item>
-            <item>8 pulsaciones</item>
-            <item>16 pulsaciones</item>
-            <item>32 pulsaciones</item>
-            <item>ilimitadas</item>
-        </string-array>
+        <plurals name="plural_taps">
+            <item quantity="one">%d pulsación</item>
+            <item quantity="two">%d pulsaciones</item>
+            <item quantity="few">%d pulsaciones</item>
+            <item quantity="many">%d pulsaciones</item>
+            <item quantity="other">%d pulsaciones</item>
+        </plurals>
+        <string name="unlimited">ilimitadas</string>
         <string name="pref_general_averagenum_unlimitedHelp">mantén apretado el boton pulsa para borrar la media</string>
         <string name="pref_cat_interface">interfaz</string>
         <string name="pref_interface_beats">mostrar pulsaciones</string>
