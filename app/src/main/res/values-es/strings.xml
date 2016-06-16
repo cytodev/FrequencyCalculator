@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- general strings -->
-    <string name="app_name">Frequency Calculator</string>
-    <string name="pref_about_developer">cytodev</string>
-    <string-array name="pref_appearance_themes_values">
-        <item>WhiteSmoke</item>
-        <item>DodgerBlue</item>
-        <item>SpringBud</item>
-        <item>ElectricPurple</item>
-        <item>OrangePeel</item>
-        <item>HollywoodCerise</item>
-        <item>SpringGreen</item>
-    </string-array>
-    <string-array name="pref_general_decimals_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-    </string-array>
-    <string-array name="pref_general_averagenum_values">
-        <item>4</item>
-        <item>8</item>
-        <item>16</item>
-        <item>32</item>
-        <item>-1</item>
-    </string-array>
-
     <!-- <actions> -->
         <string name="action_settings">ajustes</string>
     <!-- </actions> -->
@@ -39,7 +10,7 @@
         <string name="dialog_icon_message">Cambia los iconos de la aplicación a los del tema por defecto (Blanco humo y gris). Escoger no resultará en que el tema actual sea el color del icono de la aplicación.</string>
         <string name="dialog_thankyou_title">¡Hola!</string>
         <string name="dialog_thankyou_message">¡Gracias por usar esta aplicación por mas de una semana!\n¿Quieres haer alguna sugerencia de como hacer que la aplicacion sea incluso mejor?</string>
-        <string name="dialog_thankyou_fuckoff">No, gracias</string>
+        <string name="dialog_thankyou_nothanks">No, gracias</string>
     <!-- </dialogs -->
 
     <!-- <preferences> -->
@@ -93,11 +64,6 @@
         <string name="pref_interface_tap">mostrat el lugar de las pulsaciones</string>
         <string name="pref_interface_tap_sum">mostrar el botón de pulsar</string>
     <!-- </preferences> -->
-
-    <!-- <placeholders> -->
-        <string name="placeholder_icon">icon</string>
-        <string name="placeholder_string">string</string>
-    <!-- </placeholders> -->
 
     <!-- <calculator-strings> -->
         <string name="freq_hertz">Hercios</string>
