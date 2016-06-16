@@ -1,1 +1,0 @@
-Calculating reverberation and delay times made easy by FreqCalc.
