@@ -17,6 +17,7 @@
         <string name="pref_cat_about">sobre nosotros</string>
         <string name="pref_about_developer_github">Visita mi GitHub</string>
         <string name="pref_about_license">licencia</string>
+        <string name="pref_about_privacy">política de privacidad</string>
         <string name="pref_about_translations">traducciones</string>
         <string name="pref_about_translations_help">ayuda a traducir esta aplicación</string>
         <string name="pref_cat_appearance">apariencia</string>
