@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
+boolean sign = (project.hasProperty('signingConfig.properties') && new File(project.property('signingConfig.properties')).exists())
+
 android {
     compileSdkVersion 27
     buildToolsVersion "28.0.2"
@@ -19,6 +21,22 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (sign) {
+                Properties props = new Properties()
+
+                props.load(new FileInputStream(file(project.property('signingConfig.properties'))))
+
+                android {
+                    signingConfigs {
+                        release {
+                            storeFile file(props['storeFile'])
+                            storePassword props['storePassword']
+                            keyAlias props['keyAlias']
+                            keyPassword props['keyPassword']
+                        }
+                    }
+                }
+            }
         }
     }
 }
