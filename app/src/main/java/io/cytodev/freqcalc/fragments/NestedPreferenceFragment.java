@@ -201,11 +201,11 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                 return true;
             }
         };
-        final Preference.OnPreferenceClickListener licenseLauncher = new Preference.OnPreferenceClickListener() {
+        final Preference.OnPreferenceClickListener dialogLauncher = new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                AlertDialog.Builder licenseDialog = new AlertDialog.Builder(c);
-                licenseDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(c);
+                dialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -218,8 +218,12 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
                     switch(preference.getKey()) {
                         case "pref_about_license":
-                            licenseDialog.setTitle(R.string.pref_about_license);
+                            dialog.setTitle(R.string.pref_about_license);
                             ins = res.openRawResource(R.raw.freqcalc);
+                            break;
+                        case "pref_about_privacy":
+                            dialog.setTitle(R.string.pref_about_privacy);
+                            ins = res.openRawResource(R.raw.privacy);
                             break;
                         default:
                             throw new FileNotFoundException();
@@ -227,14 +231,14 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
                     byte[] b = new byte[ins.available()];
                     ins.read(b);
-                    licenseDialog.setMessage(Html.fromHtml(new String(b)));
+                    dialog.setMessage(Html.fromHtml(new String(b)));
                 } catch(Exception e) {
                     e.printStackTrace();
-                    licenseDialog.setMessage(e.getLocalizedMessage());
+                    dialog.setMessage(e.getLocalizedMessage());
                 } finally {
-                    AlertDialog dialog = licenseDialog.create();
-                    dialog.show();
-                    ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+                    AlertDialog alertDialog = dialog.create();
+                    alertDialog.show();
+                    ((TextView) alertDialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                 }
 
                 return true;
@@ -255,7 +259,8 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         Log.v(TAG, "Attaching listeners");
         attachClickListener("pref_cat_about", nestedListener);
         attachClickListener("pref_about_developer", cytoLauncher);
-        attachClickListener("pref_about_license", licenseLauncher);
+        attachClickListener("pref_about_license", dialogLauncher);
+        attachClickListener("pref_about_privacy", dialogLauncher);
         attachClickListener("pref_about_translations", translationsLauncher);
         attachClickListener("pref_cat_appearance", nestedListener);
         attachClickListener("pref_cat_general", nestedListener);
