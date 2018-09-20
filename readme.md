@@ -18,7 +18,7 @@ __INTERNET__ is used for Crashlytics. This helps us to identify issues as soon a
 __VIBRATE__ is used to give Haptic feedback when you long press the TAP button to clear the averages.  
   
 ### License:
-This project is licensed under the MIT License. You can find a copy of the license [here](https://github.com/CytoDev/FrequencyCalculator/license.md).  
+This project is licensed under the MIT License. You can find a copy of the license [here](license.md).
   
 ### Contributions:
 You are more than welcome to submit issues as well as feature requests or just a 'how-ya-doin' in the [issue tracker](https://github.com/CytoDev/FrequencyCalculator/issues/new). Contributing to the project can be done by forking it and submitting a pull request once it's all tested and tidy.  
