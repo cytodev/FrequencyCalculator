@@ -30,7 +30,9 @@ public class CytoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent github = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/cytodev/"));
+
                 github.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
                 startActivity(github);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

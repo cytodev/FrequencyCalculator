@@ -20,8 +20,8 @@ public class Translator {
     public Translator(JSONObject object) {
         try {
             this.language = object.getString("language");
-            this.name = object.getString("name");
-            this.url = object.getString("url");
+            this.name     = object.getString("name");
+            this.url      = object.getString("url");
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -29,6 +29,7 @@ public class Translator {
 
     public static ArrayList<Translator> fromJson(JSONArray jsonObjects) {
         ArrayList<Translator> translators = new ArrayList<>();
+
         for(int i = 0; i < jsonObjects.length(); i++) {
             try {
                 translators.add(new Translator(jsonObjects.getJSONObject(i)));
@@ -36,6 +37,7 @@ public class Translator {
                 e.printStackTrace();
             }
         }
+
         return translators;
     }
 }

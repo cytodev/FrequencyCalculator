@@ -39,6 +39,7 @@ public class PreferencesActivity extends ThemedActivity {
         }
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_preferences);
         setupToolbar();
         setupUserInterface();
@@ -99,8 +100,10 @@ public class PreferencesActivity extends ThemedActivity {
             Intent back = new Intent(thisActivity, MainActivity.class);
 
             back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
             thisActivity.startActivity(back);
             thisActivity.finish();
+
             overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
         }
     }

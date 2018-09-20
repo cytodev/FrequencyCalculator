@@ -118,7 +118,7 @@ public class FrequencyCalculator {
                 setFreq("bps", getFreq("hz"));
                 setFreq("bpm", calculateBeatsPerMinute(getFreq("bps"), 0.000));
                 setFreq("bph", calculateBeatsPerHour(getFreq("bpm")));
-                setFreq("tms", calculateMiliseconds(getFreq("hz"), 0.000));
+                setFreq("tms", calculateMilliseconds(getFreq("hz"), 0.000));
                 setFreq("ts",  calculateSeconds(getFreq("tms"), 0.000));
                 setFreq("tm",  calculateMinutes(getFreq("ts")));
                 break;
@@ -127,7 +127,7 @@ public class FrequencyCalculator {
                 setFreq("hz",  getFreq("bps"));
                 setFreq("bpm", calculateBeatsPerMinute(getFreq("bps"), 0.000));
                 setFreq("bph", calculateBeatsPerHour(getFreq("bpm")));
-                setFreq("tms", calculateMiliseconds(getFreq("hz"), 0.000));
+                setFreq("tms", calculateMilliseconds(getFreq("hz"), 0.000));
                 setFreq("ts",  calculateSeconds(getFreq("tms"), 0.000));
                 setFreq("tm",  calculateMinutes(getFreq("ts")));
                 break;
@@ -136,7 +136,7 @@ public class FrequencyCalculator {
                 setFreq("hz",  calculateHertz(0.000, getFreq("bpm")));
                 setFreq("bps", getFreq("hz"));
                 setFreq("bph", calculateBeatsPerHour(getFreq("bpm")));
-                setFreq("tms", calculateMiliseconds(getFreq("hz"), 0.000));
+                setFreq("tms", calculateMilliseconds(getFreq("hz"), 0.000));
                 setFreq("ts",  calculateSeconds(getFreq("tms"), 0.000));
                 setFreq("tm",  calculateMinutes(getFreq("ts")));
                 break;
@@ -145,7 +145,7 @@ public class FrequencyCalculator {
                 setFreq("bpm", calculateBeatsPerMinute(0.000, getFreq("bph")));
                 setFreq("hz",  calculateHertz(0.000, getFreq("bpm")));
                 setFreq("bps", getFreq("hz"));
-                setFreq("tms", calculateMiliseconds(getFreq("hz"), 0.000));
+                setFreq("tms", calculateMilliseconds(getFreq("hz"), 0.000));
                 setFreq("ts",  calculateSeconds(getFreq("tms"), 0.000));
                 setFreq("tm",  calculateMinutes(getFreq("ts")));
                 break;
@@ -161,7 +161,7 @@ public class FrequencyCalculator {
             case "ts":
                 setFreq("ts",  value);
                 setFreq("tm",  calculateMinutes(getFreq("ts")));
-                setFreq("tms", calculateMiliseconds(0.000, getFreq("ts")));
+                setFreq("tms", calculateMilliseconds(0.000, getFreq("ts")));
                 setFreq("hz",  calculateHertz(getFreq("tms"), 0.000));
                 setFreq("bps", getFreq("hz"));
                 setFreq("bpm", calculateBeatsPerMinute(getFreq("bps"), 0.000));
@@ -170,7 +170,7 @@ public class FrequencyCalculator {
             case "tm":
                 setFreq("tm",  value);
                 setFreq("ts",  calculateSeconds(0.000, getFreq("tm")));
-                setFreq("tms", calculateMiliseconds(0.000, getFreq("ts")));
+                setFreq("tms", calculateMilliseconds(0.000, getFreq("ts")));
                 setFreq("hz",  calculateHertz(getFreq("tms"), 0.000));
                 setFreq("bps", getFreq("hz"));
                 setFreq("bpm", calculateBeatsPerMinute(getFreq("bps"), 0.000));
@@ -268,7 +268,7 @@ public class FrequencyCalculator {
      * @param ts double time in seconds
      * @return double tms
      */
-    private double calculateMiliseconds(double hz, double ts) {
+    private double calculateMilliseconds(double hz, double ts) {
         if(hz != 0.000) {
             return 1000 / hz;
         } else if(ts != 0.000) {

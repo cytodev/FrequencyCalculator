@@ -39,6 +39,7 @@ public class TimeFragment extends Fragment {
         final EditText tm  = (EditText) time.findViewById(R.id.freq_input_timeMinutes);
         final EditText ts  = (EditText) time.findViewById(R.id.freq_input_timeSeconds);
         final EditText tms = (EditText) time.findViewById(R.id.freq_input_timeMilis);
+
         final TextWatcher tw = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -53,23 +54,27 @@ public class TimeFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 String identifier = "";
+
                 if(!((MainActivity) getActivity()).stop) {
                     try {
                         if(s.hashCode() == tm.getText().hashCode()) {
                             identifier = "tm";
+
                             ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(tm.getText().toString()));
                         } else if(s.hashCode() == ts.getText().hashCode()) {
                             identifier = "ts";
+
                             ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(ts.getText().toString()));
                         } else if(s.hashCode() == tms.getText().hashCode()) {
                             identifier = "tms";
+
                             ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(tms.getText().toString()));
                         }
                     } catch(Exception e) {
                         ((MainActivity) getActivity()).freqcalc.calculate("hz", 0.000);
                     }
 
-                    ((MainActivity) getActivity()).updateVals(identifier);
+                    ((MainActivity) getActivity()).updateValues(identifier);
                 }
             }
         };

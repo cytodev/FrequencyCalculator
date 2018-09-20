@@ -38,14 +38,15 @@ public class TranslationsActivity extends ThemedActivity {
         thisActivity = TranslationsActivity.this;
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(thisActivity);
-        String themeName = preferences.getString("pref_appearance_theme", "WhiteSmoke");
-        boolean themeLight = !preferences.getBoolean("pref_appearance_theme_dark", false);
+        String            themeName   = preferences.getString("pref_appearance_theme", "WhiteSmoke");
+        boolean           themeLight  = !preferences.getBoolean("pref_appearance_theme_dark", false);
 
         if(!super.getCurrentThemeName().equals(themeName)) {
             super.setTheme(themeLight, themeName);
         }
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_translations);
         setupToolbar();
         setupUserInterface();
@@ -87,16 +88,18 @@ public class TranslationsActivity extends ThemedActivity {
                 @Override
                 public void onClick(View v) {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/CytoDev/FrequencyCalculator/tree/translations"));
+
                     thisActivity.startActivity(browserIntent);
                 }
             });
         }
 
         try {
-            InputStream ins;
-            ins = getResources().openRawResource(R.raw.translators);
-            byte[] b = new byte[ins.available()];
+            InputStream ins = getResources().openRawResource(R.raw.translators);
+            byte[]      b   = new byte[ins.available()];
+
             ins.read(b);
+
             translatorsJSON = new JSONObject(new String(b)).getJSONArray("translators");
         } catch(Exception e) {
             e.printStackTrace();
