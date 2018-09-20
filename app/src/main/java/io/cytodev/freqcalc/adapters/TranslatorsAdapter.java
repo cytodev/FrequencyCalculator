@@ -39,12 +39,15 @@ public class TranslatorsAdapter extends ArrayAdapter<Translator> {
         ViewHolder viewHolder;
 
         if(convertView == null) {
-            viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
+
+            viewHolder  = new ViewHolder();
             convertView = inflater.inflate(R.layout.layout_translator, parent, false);
+
             viewHolder.translatorView = (LinearLayout) convertView.findViewById(R.id.translator);
-            viewHolder.language = (TextView) convertView.findViewById(R.id.translatorLanguage);
-            viewHolder.name = (TextView) convertView.findViewById(R.id.translatorName);
+            viewHolder.language       = (TextView) convertView.findViewById(R.id.translatorLanguage);
+            viewHolder.name           = (TextView) convertView.findViewById(R.id.translatorName);
+
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -55,13 +58,16 @@ public class TranslatorsAdapter extends ArrayAdapter<Translator> {
             public void onClick(View v) {
                 if(translator.url != null && !translator.url.equals("")) {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(translator.url));
+
                     getContext().startActivity(browserIntent);
                 }
             }
         });
+
         viewHolder.language.setText(translator.language);
         viewHolder.name.setText(translator.name);
 
         return convertView;
     }
+
 }

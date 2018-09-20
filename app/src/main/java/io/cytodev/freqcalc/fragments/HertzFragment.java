@@ -37,6 +37,7 @@ public class HertzFragment extends Fragment {
 
     private void initUI() {
         final EditText hz = (EditText) hertz.findViewById(R.id.freq_input_hertz);
+
         final TextWatcher tw = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -55,13 +56,14 @@ public class HertzFragment extends Fragment {
                     try {
                         if(s.hashCode() == hz.getText().hashCode()) {
                             identifier = "hz";
+
                             ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(hz.getText().toString()));
                         }
                     } catch(Exception e) {
                         ((MainActivity) getActivity()).freqcalc.calculate("hz", 0.000);
                     }
 
-                    ((MainActivity) getActivity()).updateVals(identifier);
+                    ((MainActivity) getActivity()).updateValues(identifier);
                 }
             }
         };

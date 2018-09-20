@@ -17,7 +17,6 @@
         <string name="pref_cat_about">sobre nosotros</string>
         <string name="pref_about_developer_github">Visita mi GitHub</string>
         <string name="pref_about_license">licencia</string>
-        <string name="pref_about_privacy">política de privacidad</string>
         <string name="pref_about_translations">traducciones</string>
         <string name="pref_about_translations_help">ayuda a traducir esta aplicación</string>
         <string name="pref_cat_appearance">apariencia</string>
@@ -63,6 +62,11 @@
         <string name="pref_interface_time_sum">mostrar etrada de milisegundos/segundos/minutos</string>
         <string name="pref_interface_tap">mostrat el lugar de las pulsaciones</string>
         <string name="pref_interface_tap_sum">mostrar el botón de pulsar</string>
+        <string name="pref_cat_privacy">privacy</string>
+        <string name="pref_privacy_crashreporting">informe de fallos</string>
+        <string name="pref_privacy_crashreporting_sum_on">enviando informes de fallas</string>
+        <string name="pref_privacy_crashreporting_sum_off">no enviando informes de fallas</string>
+        <string name="pref_privacy_policy">política de privacidad</string>
     <!-- </preferences> -->
 
     <!-- <calculator-strings> -->

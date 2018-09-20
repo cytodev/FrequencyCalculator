@@ -40,6 +40,7 @@ public class MainActivity extends ThemedActivity {
     private boolean         displayBeats;
     private boolean         displayTime;
     private boolean         displayTap;
+    private boolean         reportCrashes;
     private int             decimals;
 
     public FrequencyCalculator freqcalc;
@@ -63,13 +64,17 @@ public class MainActivity extends ThemedActivity {
         freqcalc.setDecimals(decimals);
 
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
+
+        if(reportCrashes) {
+            Fabric.with(this, new Crashlytics());
+        }
+
         setContentView(R.layout.activity_main);
         setupToolbar();
         setupUserInterface();
 
-        if(!getSharedPreferences("FreqCalcShared", 0).getBoolean("hasSeenThankyou", false)) {
-            sayThankyou();
+        if(!getSharedPreferences("FreqCalcShared", 0).getBoolean("hasSeenThankYou", false)) {
+            sayThankYou();
         }
     }
 
@@ -91,7 +96,9 @@ public class MainActivity extends ThemedActivity {
             settings.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
             thisActivity.startActivity(settings);
             thisActivity.finish();
+
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+
             return true;
         }
 
@@ -104,6 +111,7 @@ public class MainActivity extends ThemedActivity {
         this.displayBeats = preferences.getBoolean("pref_interface_beats", true);
         this.displayTime  = preferences.getBoolean("pref_interface_time", true);
         this.displayTap   = preferences.getBoolean("pref_interface_tap", true);
+        this.reportCrashes = preferences.getBoolean("pref_privacy_crashreporting", true);
         this.decimals     = Integer.parseInt(preferences.getString("pref_general_decimals", "3"));
     }
 
@@ -140,12 +148,12 @@ public class MainActivity extends ThemedActivity {
         fragTransaction.commit();
     }
 
-    private void sayThankyou() {
+    private void sayThankYou() {
         long firstUse = getSharedPreferences("FreqCalcShared", 0).getLong("firstUse", 0);
-        long today = new Date().getTime();
+        long today    = new Date().getTime();
 
         if(firstUse == 0) {
-            getSharedPreferences("FreqCalcShared", 0).edit().putLong("firstUse", new Date().getTime()).commit();
+            getSharedPreferences("FreqCalcShared", 0).edit().putLong("firstUse", new Date().getTime()).apply();
             return;
         }
 
@@ -159,9 +167,11 @@ public class MainActivity extends ThemedActivity {
 
                             try {
                                 intent.setData(Uri.parse("market://details?id=io.cytodev.freqcalc"));
+
                                 startActivity(intent);
                             } catch(ActivityNotFoundException anfe) {
                                 intent.setData(Uri.parse("http://play.google.com/store/apps/details?id=io.cytodev.freqcalc"));
+
                                 startActivity(intent);
                             }
                         }
@@ -169,31 +179,37 @@ public class MainActivity extends ThemedActivity {
                     .setNegativeButton(R.string.dialog_thankyou_nothanks, null)
                     .show();
 
-            getSharedPreferences("FreqCalcShared", 0).edit().putBoolean("hasSeenThankyou", true).commit();
+            getSharedPreferences("FreqCalcShared", 0).edit().putBoolean("hasSeenThankYou", true).apply();
         }
     }
 
-    public void updateVals(String identifier) {
+    public void updateValues(String identifier) {
         this.stop = true;
 
         if(!identifier.equals("hz") && findViewById(R.id.freq_input_hertz) != null) {
             ((EditText) findViewById(R.id.freq_input_hertz)).setText(freqcalc.clipDecimals(freqcalc.getFreq("hz")));
         }
+
         if(!identifier.equals("bph") && findViewById(R.id.freq_input_beatsPerHour) != null) {
             ((EditText) findViewById(R.id.freq_input_beatsPerHour)).setText(freqcalc.clipDecimals(freqcalc.getFreq("bph")));
         }
+
         if(!identifier.equals("bpm") && findViewById(R.id.freq_input_beatsPerMinute) != null) {
             ((EditText) findViewById(R.id.freq_input_beatsPerMinute)).setText(freqcalc.clipDecimals(freqcalc.getFreq("bpm")));
         }
+
         if(!identifier.equals("bps") && findViewById(R.id.freq_input_beatsPerSecond) != null) {
             ((EditText) findViewById(R.id.freq_input_beatsPerSecond)).setText(freqcalc.clipDecimals(freqcalc.getFreq("bps")));
         }
+
         if(!identifier.equals("tm") && findViewById(R.id.freq_input_timeMinutes) != null) {
             ((EditText) findViewById(R.id.freq_input_timeMinutes)).setText(freqcalc.clipDecimals(freqcalc.getFreq("tm")));
         }
+
         if(!identifier.equals("ts") && findViewById(R.id.freq_input_timeSeconds) != null) {
             ((EditText) findViewById(R.id.freq_input_timeSeconds)).setText(freqcalc.clipDecimals(freqcalc.getFreq("ts")));
         }
+
         if(!identifier.equals("tms") && findViewById(R.id.freq_input_timeMilis) != null) {
             ((EditText) findViewById(R.id.freq_input_timeMilis)).setText(freqcalc.clipDecimals(freqcalc.getFreq("tms")));
         }

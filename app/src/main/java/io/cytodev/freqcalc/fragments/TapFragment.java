@@ -39,19 +39,22 @@ public class TapFragment extends Fragment {
 
     private void initUI() {
         final Button tb = (Button) tap.findViewById(R.id.freq_input_tap);
+
         final View.OnClickListener tc = new View.OnClickListener() {
-            Long endTime = null;
+            Long endTime   = null;
             Long startTime = null;
 
             @Override
             public void onClick(View v) {
                 if(clickSwitch) {
-                    endTime = System.currentTimeMillis();
+                    endTime   = System.currentTimeMillis();
+
                     ((MainActivity) getActivity()).freqcalc.tap(MainActivity.getAverage(), MainActivity.getAverageTaps(), startTime, endTime);
-                    ((MainActivity) getActivity()).updateVals("");
+                    ((MainActivity) getActivity()).updateValues("");
+
                     startTime = System.currentTimeMillis();
                 } else {
-                    startTime = System.currentTimeMillis();
+                    startTime   = System.currentTimeMillis();
                     clickSwitch = true;
                 }
             }
@@ -60,11 +63,16 @@ public class TapFragment extends Fragment {
             @Override
             public boolean onLongClick(View v) {
                 ((MainActivity) getActivity()).freqcalc.reset();
+
                 clickSwitch = false;
-                ((MainActivity) getActivity()).updateVals("");
+
+                ((MainActivity) getActivity()).updateValues("");
+
                 Vibrator vb = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+
                 vb.vibrate(50);
                 Toast.makeText(getActivity(), R.string.freq_input_tap_cleared, Toast.LENGTH_SHORT).show();
+
                 return false;
             }
         };

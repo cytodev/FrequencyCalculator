@@ -39,6 +39,7 @@ public class BeatsFragment extends Fragment {
         final EditText    bph = (EditText) beats.findViewById(R.id.freq_input_beatsPerHour);
         final EditText    bpm = (EditText) beats.findViewById(R.id.freq_input_beatsPerMinute);
         final EditText    bps = (EditText) beats.findViewById(R.id.freq_input_beatsPerSecond);
+
         final TextWatcher tw  = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -53,23 +54,27 @@ public class BeatsFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 String identifier = "";
+
                 if(!((MainActivity) getActivity()).stop) {
                     try {
                         if(s.hashCode() == bph.getText().hashCode()) {
                             identifier = "bph";
+
                             ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(bph.getText().toString()));
                         } else if(s.hashCode() == bpm.getText().hashCode()) {
                             identifier = "bpm";
+
                             ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(bpm.getText().toString()));
                         } else if(s.hashCode() == bps.getText().hashCode()) {
                             identifier = "bps";
+
                             ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(bps.getText().toString()));
                         }
                     } catch(Exception e) {
                         ((MainActivity) getActivity()).freqcalc.calculate("hz", 0.000);
                     }
 
-                    ((MainActivity) getActivity()).updateVals(identifier);
+                    ((MainActivity) getActivity()).updateValues(identifier);
                 }
             }
         };
