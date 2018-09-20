@@ -189,6 +189,9 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                     case "pref_cat_interface":
                         instance = R.xml.prefs_interface;
                         break;
+                    case "pref_cat_privacy":
+                        instance = R.xml.prefs_privacy;
+                        break;
                     default:
                         break;
                 }
@@ -239,8 +242,9 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
                             ins = res.openRawResource(R.raw.freqcalc);
                             break;
-                        case "pref_about_privacy":
-                            dialog.setTitle(R.string.pref_about_privacy);
+                        case "pref_privacy_policy":
+                            dialog.setTitle(R.string.pref_privacy_policy);
+
                             ins = res.openRawResource(R.raw.privacy);
                             break;
                         default:
@@ -286,11 +290,12 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         attachClickListener("pref_cat_about", nestedListener);
         attachClickListener("pref_about_developer", cytoLauncher);
         attachClickListener("pref_about_license", dialogLauncher);
-        attachClickListener("pref_about_privacy", dialogLauncher);
+        attachClickListener("pref_privacy_policy", dialogLauncher);
         attachClickListener("pref_about_translations", translationsLauncher);
         attachClickListener("pref_cat_appearance", nestedListener);
         attachClickListener("pref_cat_general", nestedListener);
         attachClickListener("pref_cat_interface", nestedListener);
+        attachClickListener("pref_cat_privacy", nestedListener);
     }
 
     private void setPlurals() {

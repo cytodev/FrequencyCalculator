@@ -26,7 +26,6 @@
         <string name="pref_cat_about">about</string>
         <string name="pref_about_developer_github">Check me out on GitHub</string>
         <string name="pref_about_license">license</string>
-        <string name="pref_about_privacy">privacy policy</string>
         <string name="pref_about_translations">translations</string>
         <string name="pref_about_translations_help">help translate this app</string>
         <string name="pref_cat_appearance">appearance</string>
@@ -72,6 +71,11 @@
         <string name="pref_interface_time_sum">shows millisecond/second/minute input</string>
         <string name="pref_interface_tap">show beat tap</string>
         <string name="pref_interface_tap_sum">shows the tap button</string>
+        <string name="pref_cat_privacy">privacy</string>
+        <string name="pref_privacy_crashreporting">crash reporting</string>
+        <string name="pref_privacy_crashreporting_sum_on">sending crash reports</string>
+        <string name="pref_privacy_crashreporting_sum_off">not sending crash reports</string>
+        <string name="pref_privacy_policy">privacy policy</string>
     <!-- </preferences> -->
 
     <!-- <calculator-strings> -->

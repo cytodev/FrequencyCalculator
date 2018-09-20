@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="pref_privacy_crashreporting"
+        android:title="@string/pref_privacy_crashreporting"
+        android:summaryOn="@string/pref_privacy_crashreporting_sum_on"
+        android:summaryOff="@string/pref_privacy_crashreporting_sum_off"
+        android:defaultValue="true"/>
+
+    <Preference
+        android:key="pref_privacy_policy"
+        android:title="@string/pref_privacy_policy"/>
+
+</PreferenceScreen>

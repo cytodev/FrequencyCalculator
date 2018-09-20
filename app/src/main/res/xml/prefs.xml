@@ -21,4 +21,9 @@
         android:title="@string/pref_cat_interface"
         android:icon="?attr/ic_interface"/>
 
+    <Preference
+        android:key="pref_cat_privacy"
+        android:title="@string/pref_cat_privacy"
+        android:icon="?attr/ic_privacy"/>
+
 </PreferenceScreen>

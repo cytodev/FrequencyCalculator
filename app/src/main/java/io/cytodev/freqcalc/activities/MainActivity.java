@@ -40,6 +40,7 @@ public class MainActivity extends ThemedActivity {
     private boolean         displayBeats;
     private boolean         displayTime;
     private boolean         displayTap;
+    private boolean         reportCrashes;
     private int             decimals;
 
     public FrequencyCalculator freqcalc;
@@ -63,7 +64,11 @@ public class MainActivity extends ThemedActivity {
         freqcalc.setDecimals(decimals);
 
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
+
+        if(reportCrashes) {
+            Fabric.with(this, new Crashlytics());
+        }
+
         setContentView(R.layout.activity_main);
         setupToolbar();
         setupUserInterface();
@@ -106,6 +111,7 @@ public class MainActivity extends ThemedActivity {
         this.displayBeats = preferences.getBoolean("pref_interface_beats", true);
         this.displayTime  = preferences.getBoolean("pref_interface_time", true);
         this.displayTap   = preferences.getBoolean("pref_interface_tap", true);
+        this.reportCrashes = preferences.getBoolean("pref_privacy_crashreporting", true);
         this.decimals     = Integer.parseInt(preferences.getString("pref_general_decimals", "3"));
     }
 

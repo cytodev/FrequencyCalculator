@@ -12,11 +12,6 @@
         android:icon="?attr/ic_copyright" />
 
     <Preference
-        android:key="pref_about_privacy"
-        android:title="@string/pref_about_privacy"
-        android:icon="?attr/ic_privacy"/>
-
-    <Preference
         android:key="pref_about_translations"
         android:title="@string/pref_about_translations"
         android:icon="?attr/ic_translations"/>
