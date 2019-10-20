@@ -1,6 +1,5 @@
 package io.cytodev.freqcalc.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.fragment.app.Fragment;
+
 import io.cytodev.freqcalc.R;
 import io.cytodev.freqcalc.activities.MainActivity;
 
@@ -17,7 +18,7 @@ import io.cytodev.freqcalc.activities.MainActivity;
  * io.cytodev.freqcalc.fragments "Frequency Calculator"
  * 2016/01/25 @ 11:46
  *
- * @author Roel Walraven <cytodev@gmail.com>
+ * @author Roel Walraven <mail@cytodev.io>
  */
 public class BeatsFragment extends Fragment {
     private static final String TAG = BeatsFragment.class.getSimpleName();
@@ -36,9 +37,10 @@ public class BeatsFragment extends Fragment {
     }
 
     private void initUI() {
-        final EditText    bph = (EditText) beats.findViewById(R.id.freq_input_beatsPerHour);
-        final EditText    bpm = (EditText) beats.findViewById(R.id.freq_input_beatsPerMinute);
-        final EditText    bps = (EditText) beats.findViewById(R.id.freq_input_beatsPerSecond);
+        final MainActivity mainActivity = (MainActivity) getActivity();
+        final EditText     bph          = beats.findViewById(R.id.freq_input_beatsPerHour);
+        final EditText     bpm          = beats.findViewById(R.id.freq_input_beatsPerMinute);
+        final EditText     bps          = beats.findViewById(R.id.freq_input_beatsPerSecond);
 
         final TextWatcher tw  = new TextWatcher() {
             @Override
@@ -55,26 +57,26 @@ public class BeatsFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 String identifier = "";
 
-                if(!((MainActivity) getActivity()).stop) {
+                if(mainActivity != null && !mainActivity.stop) {
                     try {
                         if(s.hashCode() == bph.getText().hashCode()) {
                             identifier = "bph";
 
-                            ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(bph.getText().toString()));
+                            mainActivity.freqcalc.calculate(identifier, Double.parseDouble(bph.getText().toString()));
                         } else if(s.hashCode() == bpm.getText().hashCode()) {
                             identifier = "bpm";
 
-                            ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(bpm.getText().toString()));
+                            mainActivity.freqcalc.calculate(identifier, Double.parseDouble(bpm.getText().toString()));
                         } else if(s.hashCode() == bps.getText().hashCode()) {
                             identifier = "bps";
 
-                            ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(bps.getText().toString()));
+                            mainActivity.freqcalc.calculate(identifier, Double.parseDouble(bps.getText().toString()));
                         }
                     } catch(Exception e) {
-                        ((MainActivity) getActivity()).freqcalc.calculate("hz", 0.000);
+                        mainActivity.freqcalc.calculate("hz", 0.000);
                     }
 
-                    ((MainActivity) getActivity()).updateValues(identifier);
+                    mainActivity.updateValues(identifier);
                 }
             }
         };

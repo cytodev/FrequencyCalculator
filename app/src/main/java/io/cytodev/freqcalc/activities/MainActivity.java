@@ -2,8 +2,6 @@ package io.cytodev.freqcalc.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,13 +9,16 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.crashlytics.android.Crashlytics;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Date;
 
@@ -52,7 +53,7 @@ public class MainActivity extends ThemedActivity {
 
         thisActivity = MainActivity.this;
         preferences  = PreferenceManager.getDefaultSharedPreferences(thisActivity);
-        manager      = getFragmentManager();
+        manager      = getSupportFragmentManager();
 
         getPrefs();
 
@@ -124,7 +125,7 @@ public class MainActivity extends ThemedActivity {
     }
 
     private void setupToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
         if(getSupportActionBar() == null) {
             setSupportActionBar(toolbar);

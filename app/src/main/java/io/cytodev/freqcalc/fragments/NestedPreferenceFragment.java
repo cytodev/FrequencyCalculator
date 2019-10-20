@@ -10,15 +10,20 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.FragmentManager;
+import androidx.preference.Preference;
+import androidx.preference.ListPreference;
+import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceFragmentCompat;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -32,15 +37,15 @@ import io.cytodev.freqcalc.activities.TranslationsActivity;
  * io.cytodev.freqcalc.fragments "Frequency Calculator"
  * 2016/01/14 @ 13:42
  *
- * @author Roel Walraven <cytodev@gmail.com>
+ * @author Roel Walraven <mail@cytodev.io>
  */
-public class NestedPreferenceFragment extends PreferenceFragment {
+public class NestedPreferenceFragment extends PreferenceFragmentCompat {
     private final static String TAG = NestedPreferenceFragment.class.getSimpleName();
 
     private SharedPreferences.OnSharedPreferenceChangeListener changeListener;
     private Context                                            context;
 
-    private static int subTitle = -1;
+    private static CharSequence subTitle = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,16 +55,27 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
         addPreferencesFromResource(getArguments().getInt("KEY"));
 
-        NestedPreferenceFragment.subTitle = getArguments().getInt("NAME");
+        NestedPreferenceFragment.subTitle = getArguments().getCharSequence("NAME");
 
-        if(((PreferencesActivity) getActivity()).getSupportActionBar() != null) {
-            if(getArguments().getInt("NAME") != R.string.action_settings) {
-                ((PreferencesActivity) getActivity()).getSupportActionBar().setSubtitle(subTitle);
+        PreferencesActivity preferencesActivity = (PreferencesActivity) getActivity();
+
+        if (preferencesActivity != null) {
+            ActionBar actionBar = preferencesActivity.getSupportActionBar();
+
+            if(actionBar != null) {
+                if(getArguments().getCharSequence("NAME") != getResources().getString(R.string.action_settings)) {
+                    actionBar.setSubtitle(subTitle);
+                }
             }
         }
 
         setupListeners();
         setPlurals();
+    }
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+
     }
 
     @Override
@@ -85,7 +101,7 @@ public class NestedPreferenceFragment extends PreferenceFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         Log.v(TAG, "Called onAttach");
 
         super.onAttach(context);
@@ -94,8 +110,7 @@ public class NestedPreferenceFragment extends PreferenceFragment {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public void onAttach(Activity activity) {
+    public void onAttach(@NonNull Activity activity) {
         Log.v(TAG, "Called onAttach");
         Log.w(TAG, "onAttach(Activity activity) is deprecated");
 
@@ -104,14 +119,14 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         this.context = activity;
     }
 
-    public static NestedPreferenceFragment newInstance(int key, int name) {
+    public static NestedPreferenceFragment newInstance(int key, CharSequence name) {
         Log.v(TAG, "Creating new instance");
 
         NestedPreferenceFragment fragment = new NestedPreferenceFragment();
         Bundle                   args     = new Bundle();
 
         args.putInt("KEY", key);
-        args.putInt("NAME", name);
+        args.putCharSequence("NAME", name);
 
         fragment.setArguments(args);
 
@@ -121,16 +136,19 @@ public class NestedPreferenceFragment extends PreferenceFragment {
     private void attachClickListener(String key, Preference.OnPreferenceClickListener listener) {
         Log.d(TAG, "Attaching listener to " + key);
 
-        if(findPreference(key) == null)
+        Preference preference = findPreference(key);
+
+        if(preference == null)
             return;
 
-        findPreference(key).setOnPreferenceClickListener(listener);
+        preference.setOnPreferenceClickListener(listener);
     }
 
     private void setupListeners() {
         Log.v(TAG, "Setting up listeners");
 
-        final Context c = this.context;
+        final PreferencesActivity prefs = (PreferencesActivity) getActivity();
+        final Context             c     = this.context;
 
         changeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
@@ -141,9 +159,11 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                     case "pref_appearance_theme":
                         changeTheme(false, false);
                     case "pref_appearance_theme_dark":
-                        PreferencesActivity prefs   = (PreferencesActivity) getActivity();
-                        Bundle              bundle  = new Bundle();
-                        Intent              restart = prefs.getIntent();
+                        if(prefs == null)
+                            return;
+
+                        Bundle bundle  = new Bundle();
+                        Intent restart = prefs.getIntent();
 
                         bundle.putInt("pref", R.xml.prefs_appearance);
                         bundle.putInt("name", R.string.pref_cat_appearance);
@@ -197,10 +217,14 @@ public class NestedPreferenceFragment extends PreferenceFragment {
                 }
 
                 if(instance != -1) {
-                    getFragmentManager()
-                            .beginTransaction()
+                    FragmentManager fragmentManager = getFragmentManager();
+
+                    if(fragmentManager == null)
+                        return false;
+
+                    fragmentManager.beginTransaction()
                             .setCustomAnimations(R.animator.push_left_in, R.animator.push_left_out, R.animator.push_right_in, R.animator.push_right_out)
-                            .replace(R.id.rootView, newInstance(instance, preference.getTitleRes()))
+                            .replace(R.id.rootView, newInstance(instance, preference.getTitle()))
                             .addToBackStack(preference.getKey())
                             .commit();
                 }
@@ -211,8 +235,10 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         final Preference.OnPreferenceClickListener cytoLauncher = new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                PreferencesActivity prefs        = (PreferencesActivity) getActivity();
-                Intent              cytoLauncher = new Intent(prefs, CytoActivity.class);
+                if(prefs == null)
+                    return false;
+
+                Intent cytoLauncher = new Intent(prefs, CytoActivity.class);
 
                 prefs.startActivity(cytoLauncher);
 
@@ -253,6 +279,7 @@ public class NestedPreferenceFragment extends PreferenceFragment {
 
                     byte[] b = new byte[ins.available()];
 
+                    //noinspection ResultOfMethodCallIgnored
                     ins.read(b);
 
                     dialog.setMessage(Html.fromHtml(new String(b)));
@@ -274,8 +301,10 @@ public class NestedPreferenceFragment extends PreferenceFragment {
         final Preference.OnPreferenceClickListener translationsLauncher = new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference){
-                PreferencesActivity prefs                = (PreferencesActivity) getActivity();
-                Intent              translationsLauncher = new Intent(prefs, TranslationsActivity.class);
+                if(prefs == null)
+                    return false;
+
+                Intent translationsLauncher = new Intent(prefs, TranslationsActivity.class);
 
                 translationsLauncher.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
@@ -299,8 +328,8 @@ public class NestedPreferenceFragment extends PreferenceFragment {
     }
 
     private void setPlurals() {
-        ListPreference decimals = (ListPreference) findPreference("pref_general_decimals");
-        ListPreference average  = (ListPreference) findPreference("pref_general_averagenum");
+        ListPreference decimals = findPreference("pref_general_decimals");
+        ListPreference average  = findPreference("pref_general_averagenum");
 
         if(decimals != null) {
             CharSequence[] decimalEntries = {

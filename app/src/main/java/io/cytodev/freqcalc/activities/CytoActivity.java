@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
@@ -15,7 +15,7 @@ import io.cytodev.freqcalc.R;
  * io.cytodev.freqcalc.activities "Frequency Calculator"
  * 2016/01/22 @ 16:50
  *
- * @author Roel Walraven <cytodev@gmail.com>
+ * @author Roel Walraven <mail@cytodev.io>
  */
 public class CytoActivity extends AppCompatActivity {
 
@@ -38,7 +38,7 @@ public class CytoActivity extends AppCompatActivity {
             }
         });
         
-        animate(findViewById(R.id.github), CytoActivity.this, R.anim.slide_up, 750);
+        animate(findViewById(R.id.github), CytoActivity.this);
     }
 
     @Override
@@ -47,14 +47,14 @@ public class CytoActivity extends AppCompatActivity {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
-    private void animate(final View view, final Context context, final int animation, final int delay) {
+    private void animate(final View view, final Context context) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 view.setVisibility(View.VISIBLE);
-                view.startAnimation(AnimationUtils.loadAnimation(context, animation));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_up));
             }
-        }, delay);
+        }, 750);
     }
 
 }
