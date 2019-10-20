@@ -9,19 +9,19 @@
 
     <include layout="@layout/layout_toolbar"/>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="?attr/actionBarSize"
         android:orientation="vertical">
 
-        <ListView
+        <view class="androidx.appcompat.app.AlertController$RecycleListView"
             android:id="@+id/translators"
             android:layout_height="0dip"
             android:layout_width="match_parent"
             android:layout_weight="1" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/pref_about_translations_help"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -31,6 +31,6 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:text="@string/pref_about_translations_help" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

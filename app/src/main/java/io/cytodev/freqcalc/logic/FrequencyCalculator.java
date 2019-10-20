@@ -288,13 +288,21 @@ public class FrequencyCalculator {
         char[] positions = new char[this.decimals];
         Arrays.fill(positions, '#');
 
-        if(number != 0) {
-            DecimalFormat df = new DecimalFormat("#." + new String(positions));
-            df.setRoundingMode(RoundingMode.CEILING);
-            return df.format(number);
+        if(number == 0)
+            return "0";
+
+        DecimalFormat df = new DecimalFormat("#." + new String(positions));
+
+        df.setRoundingMode(RoundingMode.FLOOR);
+
+        if(Double.parseDouble(df.format(number)) == 0.000) {
+            Arrays.fill(positions, '0');
+
+            return String.format("!0.%s", new String(positions));
         }
 
-        return "0";
+        df.setRoundingMode(RoundingMode.CEILING);
+        return df.format(number);
     }
 
     /**

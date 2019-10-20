@@ -2,5 +2,6 @@
 <resources>
 
     <color name="transparant_black">#CC000000</color>
+    <color name="warning">#FFE65100</color>
 
 </resources>
