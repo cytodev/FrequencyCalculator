@@ -112,13 +112,13 @@ public class MainActivity extends ThemedActivity {
     }
 
     private void getPrefs() {
-        this.themeName    = preferences.getString("pref_appearance_theme", "WhiteSmoke");
-        this.themeLight   = !preferences.getBoolean("pref_appearance_theme_dark", false);
-        this.displayBeats = preferences.getBoolean("pref_interface_beats", true);
-        this.displayTime  = preferences.getBoolean("pref_interface_time", true);
-        this.displayTap   = preferences.getBoolean("pref_interface_tap", true);
+        this.themeName     = preferences.getString("pref_appearance_theme", "WhiteSmoke");
+        this.themeLight    = !preferences.getBoolean("pref_appearance_theme_dark", false);
+        this.displayBeats  = preferences.getBoolean("pref_interface_beats", true);
+        this.displayTime   = preferences.getBoolean("pref_interface_time", true);
+        this.displayTap    = preferences.getBoolean("pref_interface_tap", true);
         this.reportCrashes = preferences.getBoolean("pref_privacy_crashreporting", true);
-        this.decimals     = Integer.parseInt(preferences.getString("pref_general_decimals", "3"));
+        this.decimals      = Integer.parseInt(preferences.getString("pref_general_decimals", "3"));
     }
 
     public static boolean getAverage() {
@@ -163,7 +163,7 @@ public class MainActivity extends ThemedActivity {
             return;
         }
 
-        if(firstUse < today - ((long) 604800000)) {
+        if(firstUse < today - (long) 604800000) {
             new AlertDialog.Builder(thisActivity)
                     .setTitle(R.string.dialog_thankyou_title)
                     .setMessage(R.string.dialog_thankyou_message)
