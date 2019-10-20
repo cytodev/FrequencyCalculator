@@ -88,7 +88,7 @@ public class ThemedActivity extends AppCompatActivity {
      *
      * @return true if the current theme is light, false if it's not
      */
-    private boolean isCurrentThemeLight() {
+    public boolean isCurrentThemeLight() {
         return currentThemeIsLight;
     }
 

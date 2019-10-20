@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LayoutBeats"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/freq_beats"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -16,70 +16,115 @@
         android:textStyle="bold"
         style="?android:listSeparatorTextViewStyle" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="6">
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/freq_input_beatsPerSecond"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:importantForAutofill="no"
+            android:hint="@string/freq_beatsPerSecond" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/freq_beatsPerSecond"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/freq_beatsPerSecond" />
 
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/freq_beatsPerSecond_warning"
+            android:src="@drawable/ic_warning"
+            android:contentDescription="@string/freq_precision_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:visibility="invisible" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="6">
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/freq_input_beatsPerMinute"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:importantForAutofill="no"
+            android:hint="@string/freq_beatsPerMinute" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/freq_beatsPerMinute"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/freq_beatsPerMinute" />
 
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/freq_beatsPerMinute_warning"
+            android:src="@drawable/ic_warning"
+            android:contentDescription="@string/freq_precision_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:visibility="invisible" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="6">
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/freq_input_beatsPerHour"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:importantForAutofill="no"
+            android:hint="@string/freq_beatsPerHour" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/freq_beatsPerHour"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/freq_beatsPerHour" />
 
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/freq_beatsPerHour_warning"
+            android:src="@drawable/ic_warning"
+            android:contentDescription="@string/freq_precision_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:visibility="invisible" />
 
-</LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

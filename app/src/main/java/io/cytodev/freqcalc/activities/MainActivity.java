@@ -9,11 +9,15 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.view.View;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import com.crashlytics.android.Crashlytics;
 
@@ -29,6 +33,7 @@ import io.cytodev.freqcalc.fragments.TapFragment;
 import io.cytodev.freqcalc.fragments.TimeFragment;
 import io.cytodev.freqcalc.logic.FrequencyCalculator;
 import io.cytodev.themedactivity.ThemedActivity;
+
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends ThemedActivity {
@@ -184,36 +189,59 @@ public class MainActivity extends ThemedActivity {
         }
     }
 
+    private void updateValue(String identifier, int inputId, int textId, int warningId) {
+        AppCompatEditText  input   = findViewById(inputId);
+        AppCompatTextView  text    = findViewById(textId);
+        AppCompatImageView warning = findViewById(warningId);
+
+        if(input == null)
+            return;
+
+        String value = freqcalc.clipDecimals(freqcalc.getFreq(identifier));
+
+        int warningTextColor = getResources().getColor(R.color.warning);
+        int normalTextColor  = getResources().getColor(isCurrentThemeLight() ? R.color.textColorPrimaryDark : R.color.textColorPrimaryLight);
+
+        if(value.contains("!")) {
+            value = value.replace("!", "");
+
+            input.setTextColor(warningTextColor);
+            input.setError(getResources().getString(R.string.freq_precision_warning), null);
+            text.setTextColor(warningTextColor);
+            warning.setVisibility(View.VISIBLE);
+        } else {
+            input.setTextColor(normalTextColor);
+            input.setError(null, null);
+            text.setTextColor(normalTextColor);
+            warning.setVisibility(View.INVISIBLE);
+        }
+
+        input.setText(value);
+    }
+
     public void updateValues(String identifier) {
         this.stop = true;
 
-        if(!identifier.equals("hz") && findViewById(R.id.freq_input_hertz) != null) {
-            ((EditText) findViewById(R.id.freq_input_hertz)).setText(freqcalc.clipDecimals(freqcalc.getFreq("hz")));
-        }
+        if(!identifier.equals("hz"))
+            updateValue("hz", R.id.freq_input_hertz, R.id.freq_hertz, R.id.freq_hertz_warning);
 
-        if(!identifier.equals("bph") && findViewById(R.id.freq_input_beatsPerHour) != null) {
-            ((EditText) findViewById(R.id.freq_input_beatsPerHour)).setText(freqcalc.clipDecimals(freqcalc.getFreq("bph")));
-        }
+        if(!identifier.equals("bph"))
+            updateValue("bph", R.id.freq_input_beatsPerHour, R.id.freq_beatsPerHour, R.id.freq_beatsPerHour_warning);
 
-        if(!identifier.equals("bpm") && findViewById(R.id.freq_input_beatsPerMinute) != null) {
-            ((EditText) findViewById(R.id.freq_input_beatsPerMinute)).setText(freqcalc.clipDecimals(freqcalc.getFreq("bpm")));
-        }
+        if(!identifier.equals("bpm"))
+            updateValue("bpm", R.id.freq_input_beatsPerMinute, R.id.freq_beatsPerMinute, R.id.freq_beatsPerMinute_warning);
 
-        if(!identifier.equals("bps") && findViewById(R.id.freq_input_beatsPerSecond) != null) {
-            ((EditText) findViewById(R.id.freq_input_beatsPerSecond)).setText(freqcalc.clipDecimals(freqcalc.getFreq("bps")));
-        }
+        if(!identifier.equals("bps"))
+            updateValue("bps", R.id.freq_input_beatsPerSecond, R.id.freq_beatsPerSecond, R.id.freq_beatsPerSecond_warning);
 
-        if(!identifier.equals("tm") && findViewById(R.id.freq_input_timeMinutes) != null) {
-            ((EditText) findViewById(R.id.freq_input_timeMinutes)).setText(freqcalc.clipDecimals(freqcalc.getFreq("tm")));
-        }
+        if(!identifier.equals("tm"))
+            updateValue("tm", R.id.freq_input_timeMinutes, R.id.freq_timeMinutes, R.id.freq_timeMinutes_warning);
 
-        if(!identifier.equals("ts") && findViewById(R.id.freq_input_timeSeconds) != null) {
-            ((EditText) findViewById(R.id.freq_input_timeSeconds)).setText(freqcalc.clipDecimals(freqcalc.getFreq("ts")));
-        }
+        if(!identifier.equals("ts"))
+            updateValue("ts", R.id.freq_input_timeSeconds, R.id.freq_timeSeconds, R.id.freq_timeSeconds_warning);
 
-        if(!identifier.equals("tms") && findViewById(R.id.freq_input_timeMilis) != null) {
-            ((EditText) findViewById(R.id.freq_input_timeMilis)).setText(freqcalc.clipDecimals(freqcalc.getFreq("tms")));
-        }
+        if(!identifier.equals("tms"))
+            updateValue("tms", R.id.freq_input_timeMilis, R.id.freq_timeMilis, R.id.freq_timeMilis_warning);
 
         this.stop = false;
     }
