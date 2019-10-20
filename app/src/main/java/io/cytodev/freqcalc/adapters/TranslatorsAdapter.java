@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 import java.util.ArrayList;
 
@@ -26,9 +26,9 @@ import io.cytodev.freqcalc.objects.Translator;
 public class TranslatorsAdapter extends ArrayAdapter<Translator> {
 
     private static class ViewHolder {
-        LinearLayout translatorView;
-        TextView     language;
-        TextView     name;
+        LinearLayoutCompat translatorView;
+        AppCompatTextView  language;
+        AppCompatTextView  name;
     }
 
     public TranslatorsAdapter(Context context, ArrayList<Translator> translators) {
