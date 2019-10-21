@@ -10,7 +10,7 @@ import java.util.Arrays;
  * io.cytodev.freqcalc.logic "Frequency Calculator"
  * 2016/01/25 @ 08:53
  *
- * @author Roel Walraven <cytodev@gmail.com>
+ * @author Roel Walraven <mail@cytodev.io>
  *
  *     FrequencyCalculator built to calculate time and frequencies. Also comes with a tap function.
  */
@@ -100,7 +100,7 @@ public class FrequencyCalculator {
      * @param decimals int value from 0 to 2147483647
      */
     public void setDecimals(int decimals) {
-        Log.d(TAG, "Setting decimals to " + Integer.toString(decimals));
+        Log.d(TAG, String.format("Setting decimals to %d", decimals));
 
         this.decimals = decimals;
     }
@@ -288,13 +288,21 @@ public class FrequencyCalculator {
         char[] positions = new char[this.decimals];
         Arrays.fill(positions, '#');
 
-        if(number != 0) {
-            DecimalFormat df = new DecimalFormat("#." + new String(positions));
-            df.setRoundingMode(RoundingMode.CEILING);
-            return df.format(number);
+        if(number == 0)
+            return "0";
+
+        DecimalFormat df = new DecimalFormat("#." + new String(positions));
+
+        df.setRoundingMode(RoundingMode.FLOOR);
+
+        if(Double.parseDouble(df.format(number)) == 0.000) {
+            Arrays.fill(positions, '0');
+
+            return String.format("!0.%s", new String(positions));
         }
 
-        return "0";
+        df.setRoundingMode(RoundingMode.CEILING);
+        return df.format(number);
     }
 
     /**

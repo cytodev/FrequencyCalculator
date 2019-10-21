@@ -82,6 +82,7 @@
         <string name="freq_tap">Pulsa para calcular:</string>
         <string name="freq_input_tap">PULSA</string>
         <string name="freq_input_tap_cleared">Borrada la media de pulsaciones.</string>
+        <string name="freq_precision_warning">The value is out of reach of the current decimal precision</string>
     <!-- </calculator-strings> -->
 
 </resources>

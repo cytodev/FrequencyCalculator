@@ -3,9 +3,10 @@ package io.cytodev.themedactivity;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -87,7 +88,7 @@ public class ThemedActivity extends AppCompatActivity {
      *
      * @return true if the current theme is light, false if it's not
      */
-    private boolean isCurrentThemeLight() {
+    public boolean isCurrentThemeLight() {
         return currentThemeIsLight;
     }
 
@@ -138,7 +139,7 @@ public class ThemedActivity extends AppCompatActivity {
      * @return the name of the theme
      */
     private String getTheme(boolean light, int themeResID) {
-        Log.v(TAG, "Searching for "+((light) ? "light" : "dark")+" theme with resid "+Integer.toString(themeResID));
+        Log.v(TAG, String.format("Searching for %s theme with resid %d", (light) ? "light" : "dark", themeResID));
 
         Iterator<Map.Entry<String, Integer>> data = (light) ? lightThemes.entrySet().iterator() : darkThemes.entrySet().iterator();
 
@@ -151,7 +152,7 @@ public class ThemedActivity extends AppCompatActivity {
             }
         }
 
-        Log.w(TAG, "No " + ((light) ? "light" : "dark") + " theme with resid " + Integer.toString(themeResID) + " found!");
+        Log.w(TAG, String.format("No %s theme with resid %d found!", (light) ? "light" : "dark", themeResID));
 
         return "";
     }
@@ -239,9 +240,9 @@ public class ThemedActivity extends AppCompatActivity {
 
         double darkness = ((colorPrimaryDarkness + colorPrimaryDarkDarkness) / 2); // pretty rad variable.
 
-        Log.d(TAG, "colorPrimary darkness value: " + Double.toString(colorPrimaryDarkness));
-        Log.d(TAG, "colorPrimaryDark darkness value: " + Double.toString(colorPrimaryDarkDarkness));
-        Log.d(TAG, "overall darkness value: " + Double.toString(darkness));
+        Log.d(TAG, String.format("colorPrimary darkness value: %s", colorPrimaryDarkness));
+        Log.d(TAG, String.format("colorPrimaryDark darkness value: %s", colorPrimaryDarkDarkness));
+        Log.d(TAG, String.format("overall darkness value: %s", darkness));
 
         return darkness;
     }

@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +26,7 @@ import io.cytodev.themedactivity.ThemedActivity;
  * io.cytodev.freqcalc.activities "FrequencyCalculator"
  * 2016/06/15 @ 15:42
  *
- * @author Roel Walraven <cytodev@gmail.com>
+ * @author Roel Walraven <mail@cytodev.io>
  */
 public class TranslationsActivity extends ThemedActivity {
     private Activity thisActivity;
@@ -69,7 +69,7 @@ public class TranslationsActivity extends ThemedActivity {
     }
 
     private void setupToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
         if(getSupportActionBar() == null) {
             setSupportActionBar(toolbar);
@@ -79,8 +79,8 @@ public class TranslationsActivity extends ThemedActivity {
     }
 
     private void setupUserInterface() {
-        Button    help            = (Button) findViewById(R.id.pref_about_translations_help);
-        ListView  translatorsList = (ListView) findViewById(R.id.translators);
+        Button    help            = findViewById(R.id.pref_about_translations_help);
+        ListView  translatorsList = findViewById(R.id.translators);
         JSONArray translatorsJSON = null;
 
         if(help != null) {
@@ -98,6 +98,7 @@ public class TranslationsActivity extends ThemedActivity {
             InputStream ins = getResources().openRawResource(R.raw.translators);
             byte[]      b   = new byte[ins.available()];
 
+            //noinspection ResultOfMethodCallIgnored
             ins.read(b);
 
             translatorsJSON = new JSONObject(new String(b)).getJSONArray("translators");

@@ -1,6 +1,5 @@
 package io.cytodev.freqcalc.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.fragment.app.Fragment;
+
 import io.cytodev.freqcalc.R;
 import io.cytodev.freqcalc.activities.MainActivity;
 
@@ -17,7 +18,7 @@ import io.cytodev.freqcalc.activities.MainActivity;
  * io.cytodev.freqcalc.fragments "Frequency Calculator"
  * 2016/01/25 @ 12:47
  *
- * @author Roel Walraven <cytodev@gmail.com>
+ * @author Roel Walraven <mail@cytodev.io>
  */
 public class HertzFragment extends Fragment {
     private static final String TAG = HertzFragment.class.getSimpleName();
@@ -36,7 +37,8 @@ public class HertzFragment extends Fragment {
     }
 
     private void initUI() {
-        final EditText hz = (EditText) hertz.findViewById(R.id.freq_input_hertz);
+        final MainActivity mainActivity = (MainActivity) getActivity();
+        final EditText     hz           = hertz.findViewById(R.id.freq_input_hertz);
 
         final TextWatcher tw = new TextWatcher() {
             @Override
@@ -52,18 +54,19 @@ public class HertzFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 String identifier = "";
-                if(!((MainActivity) getActivity()).stop) {
+
+                if(mainActivity != null && !mainActivity.stop) {
                     try {
                         if(s.hashCode() == hz.getText().hashCode()) {
                             identifier = "hz";
 
-                            ((MainActivity) getActivity()).freqcalc.calculate(identifier, Double.parseDouble(hz.getText().toString()));
+                            mainActivity.freqcalc.calculate(identifier, Double.parseDouble(hz.getText().toString()));
                         }
                     } catch(Exception e) {
-                        ((MainActivity) getActivity()).freqcalc.calculate("hz", 0.000);
+                        mainActivity.freqcalc.calculate("hz", 0.000);
                     }
 
-                    ((MainActivity) getActivity()).updateValues(identifier);
+                    mainActivity.updateValues(identifier);
                 }
             }
         };

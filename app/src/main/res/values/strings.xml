@@ -91,6 +91,7 @@
         <string name="freq_tap">tap the bpm:</string>
         <string name="freq_input_tap">TAP</string>
         <string name="freq_input_tap_cleared">cleared bpm average.</string>
+        <string name="freq_precision_warning">The value is out of reach of the current decimal precision</string>
     <!-- </calculator-strings> -->
 
 </resources>

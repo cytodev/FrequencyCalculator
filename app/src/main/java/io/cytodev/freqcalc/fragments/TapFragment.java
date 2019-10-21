@@ -1,6 +1,5 @@
 package io.cytodev.freqcalc.fragments;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -11,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import io.cytodev.freqcalc.R;
 import io.cytodev.freqcalc.activities.MainActivity;
 
@@ -18,7 +19,7 @@ import io.cytodev.freqcalc.activities.MainActivity;
  * io.cytodev.freqcalc.fragments "Frequency Calculator"
  * 2016/01/25 @ 12:53
  *
- * @author Roel Walraven <cytodev@gmail.com>
+ * @author Roel Walraven <mail@cytodev.io>
  */
 public class TapFragment extends Fragment {
     private static final String TAG = TapFragment.class.getSimpleName();
@@ -38,7 +39,8 @@ public class TapFragment extends Fragment {
     }
 
     private void initUI() {
-        final Button tb = (Button) tap.findViewById(R.id.freq_input_tap);
+        final MainActivity mainActivity = (MainActivity) getActivity();
+        final Button       tb           = tap.findViewById(R.id.freq_input_tap);
 
         final View.OnClickListener tc = new View.OnClickListener() {
             Long endTime   = null;
@@ -49,8 +51,10 @@ public class TapFragment extends Fragment {
                 if(clickSwitch) {
                     endTime   = System.currentTimeMillis();
 
-                    ((MainActivity) getActivity()).freqcalc.tap(MainActivity.getAverage(), MainActivity.getAverageTaps(), startTime, endTime);
-                    ((MainActivity) getActivity()).updateValues("");
+                    if (mainActivity != null) {
+                        mainActivity.freqcalc.tap(MainActivity.getAverage(), MainActivity.getAverageTaps(), startTime, endTime);
+                        mainActivity.updateValues("");
+                    }
 
                     startTime = System.currentTimeMillis();
                 } else {
@@ -62,15 +66,20 @@ public class TapFragment extends Fragment {
         final View.OnLongClickListener tlc = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((MainActivity) getActivity()).freqcalc.reset();
+                if(mainActivity != null)
+                    mainActivity.freqcalc.reset();
 
                 clickSwitch = false;
 
-                ((MainActivity) getActivity()).updateValues("");
+                if(mainActivity != null) {
+                    mainActivity.updateValues("");
 
-                Vibrator vb = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                    Vibrator vb = (Vibrator) mainActivity.getSystemService(Context.VIBRATOR_SERVICE);
 
-                vb.vibrate(50);
+                    if (vb != null)
+                        vb.vibrate(50);
+                }
+
                 Toast.makeText(getActivity(), R.string.freq_input_tap_cleared, Toast.LENGTH_SHORT).show();
 
                 return false;
