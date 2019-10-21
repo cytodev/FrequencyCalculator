@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased](https://github.com/CytoDev/FrequencyCalculator/compare/master...dev)
 
+## [1.1.1] - 2019-10-20
+### Fixed
+ - Fixed localization issues where commas would lead to fatal crashes
+
 ## [1.1.0] - 2019-10-20
 ### Added
  - Add warning messages when values exceed decimal precision

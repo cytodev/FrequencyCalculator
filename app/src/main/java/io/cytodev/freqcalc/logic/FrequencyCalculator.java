@@ -3,8 +3,12 @@ package io.cytodev.freqcalc.logic;
 import android.util.Log;
 
 import java.math.RoundingMode;
+
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import java.util.Arrays;
+import java.util.Locale;
 
 /**
  * io.cytodev.freqcalc.logic "Frequency Calculator"
@@ -291,18 +295,22 @@ public class FrequencyCalculator {
         if(number == 0)
             return "0";
 
-        DecimalFormat df = new DecimalFormat("#." + new String(positions));
+        // default to US number format because that's the one thing that is sane over there...
+        NumberFormat  numberFormat  = NumberFormat.getNumberInstance(Locale.US);
+        DecimalFormat decimalFormat = (DecimalFormat) numberFormat;
 
-        df.setRoundingMode(RoundingMode.FLOOR);
+        decimalFormat.applyPattern("#." + new String(positions));
+        decimalFormat.setRoundingMode(RoundingMode.FLOOR);
 
-        if(Double.parseDouble(df.format(number)) == 0.000) {
+        if(Double.parseDouble(decimalFormat.format(number)) == 0.000) {
             Arrays.fill(positions, '0');
 
             return String.format("!0.%s", new String(positions));
         }
 
-        df.setRoundingMode(RoundingMode.CEILING);
-        return df.format(number);
+        decimalFormat.setRoundingMode(RoundingMode.CEILING);
+
+        return decimalFormat.format(number);
     }
 
     /**
